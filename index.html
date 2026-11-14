@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-:root{--brand:#CC0000;--brand-hi:#FF2020;--black:#080808;--white:#F2F2ED;--grey:#141414;--mid:#242424;--muted:#8a8a8a;--ok:#00cc44}
+:root{--brand:#CC0000;--brand-hi:#FF2020;--black:#080808;--white:#F2F2ED;--grey:#141414;--mid:#242424;--muted:#8a8a8a;--ok:#00cc44;--yellow:#F5C518}
 *{box-sizing:border-box}
 html,body{margin:0}
 body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
@@ -83,7 +83,17 @@ h1.page{font-family:'Bebas Neue';font-weight:400;font-size:clamp(34px,5vw,54px);
 .input:focus{border-color:var(--brand)}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 18px}
 .chip{background:transparent;border:1px solid #333;color:#bbb;padding:6px 12px;font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.08em;cursor:pointer}
-.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.chip.on{background:var(--yellow);border-color:var(--yellow);color:#080808;font-weight:500}
+.chip:hover{border-color:var(--yellow);color:var(--yellow)}
+.chip.on:hover{color:#080808}
+.net .avatar{box-shadow:0 0 0 2px var(--black),0 0 0 3px var(--yellow);color:var(--yellow)}
+.net{transition:border-color .15s}
+.net:hover{border-color:var(--yellow)}
+.net .pn{font-weight:600;font-size:16px;color:var(--yellow);line-height:1.2}
+.net .biz{margin-top:16px;padding-left:10px;border-left:3px solid var(--yellow);font-size:15px;font-weight:500;line-height:1.25}
+.net .ind{margin-top:4px;padding-left:13px;color:var(--yellow);font-size:10.5px;letter-spacing:.14em}
+.net .offer{font-size:13px;color:#cfcfca;margin-top:12px;line-height:1.5;padding-top:12px;border-top:1px solid var(--mid)}
+.net .btn.ghost:hover{border-color:var(--yellow);color:var(--yellow);background:transparent}
 .avatar{width:42px;height:42px;border-radius:50%;background:var(--mid);display:grid;place-items:center;font-family:'Bebas Neue';font-size:18px;color:#ddd;flex-shrink:0}
 .people{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
 .pace{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;margin:18px 0}
@@ -278,9 +288,9 @@ function vNetwork(){
    <div class="grid people" id="netlist">${netCards(list)}</div>
    <div class="callout">Sponsor slot: a member business can pay to appear first in the network, which is a second revenue line for the club and for Maru.</div>`;
 }
-function netCards(list){return list.length?list.map(p=>`<div class="card"><div class="row" style="justify-content:flex-start"><div class="avatar">${p.i}</div><div><div style="font-weight:500;font-size:14px">${p.n}</div><div class="tag">${p.r}</div></div></div>
-   <div style="margin-top:14px;font-size:13.5px;font-weight:500">${p.biz}</div><div class="tag mono" style="margin-top:2px">${p.ind.toUpperCase()} · ${p.city.toUpperCase()}</div>
-   <div style="font-size:12.5px;color:#cfcfca;margin-top:10px;line-height:1.5">${p.offer}</div>
+function netCards(list){return list.length?list.map(p=>`<div class="card net"><div class="row" style="justify-content:flex-start"><div class="avatar">${p.i}</div><div><div class="pn">${p.n}</div><div class="tag">${p.r}</div></div></div>
+   <div class="biz">${p.biz}</div><div class="tag mono ind">${p.ind.toUpperCase()} · ${p.city.toUpperCase()}</div>
+   <div class="offer">${p.offer}</div>
    <button class="btn ghost sm" style="margin-top:14px" onclick="toast('Introduction request sent to ${p.n.split(' ')[0]} (prototype)')">Request intro</button></div>`).join(''):`<div class="card muted">No members match.</div>`}
 function renderNetList(){const l=people.filter(p=>(netFilter==='All'||p.ind===netFilter)&&(p.n+p.biz+p.offer).toLowerCase().includes(netQ.toLowerCase()));$('#netlist').innerHTML=netCards(l)}
 function vPayments(){
