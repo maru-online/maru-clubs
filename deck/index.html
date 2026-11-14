@@ -18,6 +18,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://maru-clubs.vercel.app/og-deck.png">
 <style>
+:root{--red:#CC0000;--black:#080808;--white:#F2F2ED;--grey:#141414;--mid:#242424;--body:#CCCCCA;--yellow:#F5C518}
 @font-face{font-family:'Bebas Neue';font-weight:400;font-display:block;src:url(fonts/bebas-neue-latin-400-normal.woff2) format('woff2')}
 @font-face{font-family:'DM Sans';font-weight:300;font-display:block;src:url(fonts/dm-sans-latin-300-normal.woff2) format('woff2')}
 @font-face{font-family:'DM Sans';font-weight:400;font-display:block;src:url(fonts/dm-sans-latin-400-normal.woff2) format('woff2')}
@@ -106,6 +107,28 @@ th{font-family:'IBM Plex Mono','Courier New',monospace;font-size:22px;letter-spa
 .pcard:hover{border-color:#CC0000}
 .pcard h3{font-size:40px}
 .pcard .txt{margin-top:12px}
+
+/* Yellow token: highlights and blending against red/black */
+.pill a,.pill{color:var(--yellow)}
+.pill a{color:var(--yellow)}
+#nav button:hover{color:var(--yellow)}
+#bar i{background:var(--yellow)}
+.link a{color:var(--yellow)}
+.redbar{position:relative;overflow:visible}
+.redbar::after{content:'';position:absolute;left:72px;top:0;width:24px;height:4px;background:var(--yellow)}
+section.red .eyebrow{color:var(--yellow)}
+section.red h2.st em{-webkit-text-stroke:3px var(--yellow)}
+section.red .card .tag{color:var(--yellow)}
+section.red .pill{background:#080808}
+section.red .card{border-color:rgba(245,197,24,.45)}
+section.light .bigred{color:#CC0000;background:linear-gradient(transparent 62%,rgba(245,197,24,.75) 62%);padding:0 6px;align-self:flex-start}
+#riders .bigred,#prices .bigred{color:var(--yellow)}
+#prices .card.accent{border-color:var(--yellow)}
+section.light .card.accent{border-color:var(--yellow);border-width:3px}
+tr[style*="FBE3E0"]{background:#FFF4C2!important;box-shadow:inset 6px 0 0 var(--yellow)}
+.bar.hot{background:linear-gradient(90deg,#CC0000 0,#CC0000 calc(100% - 10px),var(--yellow) calc(100% - 10px))}
+.pcard:hover{border-color:var(--yellow)}
+.barval{color:inherit}
 /* nav bar */
 #nav{position:fixed;left:0;right:0;bottom:0;height:44px;background:#111;border-top:1px solid #2a2a28;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 12px;color:#bbb;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;z-index:5}
 #nav button{background:#1c1c1a;color:#eee;border:1px solid #333;padding:7px 14px;font:inherit;cursor:pointer}
@@ -154,7 +177,7 @@ th{font-family:'IBM Plex Mono','Courier New',monospace;font-size:22px;letter-spa
 <div class="card accent in d2" style="flex:1;"><p class="tag">WITH MARU CLUBS</p>
 <ul style="font-size:30px;line-height:1.6;color:#F2F2ED;"><li>One calendar with pace groups</li><li>RSVP in one tap, with a cap per group</li><li>Automatic waitlist that moves up</li><li>Dues paid in rand and tracked live</li><li>A members’ business network</li></ul></div>
 </div>
-<p class="source">Problem as described in PBC’s own proposal: ride information lost in 200 messages, no single calendar, no digital home. <a href="https://maru-clubs.vercel.app/#ride-blue-valley" target="_blank" rel="noopener" style="color:#FF2020;">See a ride in the prototype →</a></p>
+<p class="source">Problem as described in PBC’s own proposal: ride information lost in 200 messages, no single calendar, no digital home. <a href="https://maru-clubs.vercel.app/#ride-blue-valley" target="_blank" rel="noopener" style="color:var(--yellow);">See a ride in the prototype →</a></p>
 </section>
 
 <section id="apps" class="light">
@@ -282,12 +305,12 @@ th{font-family:'IBM Plex Mono','Courier New',monospace;font-size:22px;letter-spa
 <p class="eyebrow">Q4 · CAN WE SEE IT WORKING?</p>
 <h2 class="st">YES. IT’S BUILT.<br><em>TAP THROUGH IT</em></h2>
 <div class="pgrid">
-<a class="pcard" href="https://maru-clubs.vercel.app/#home" target="_blank" rel="noopener"><div><p class="tag">01</p><h3>Member dashboard</h3><p class="txt">Stats, upcoming rides and announcements</p></div><p class="link"><span style="color:#FF2020;">OPEN →</span></p></a>
-<a class="pcard" href="https://maru-clubs.vercel.app/#ride-blue-valley" target="_blank" rel="noopener"><div><p class="tag">02</p><h3>RSVP and waitlist</h3><p class="txt">A-Group full with a queue; B-Group has seats left</p></div><p class="link"><span style="color:#FF2020;">OPEN →</span></p></a>
-<a class="pcard" href="https://maru-clubs.vercel.app/#network" target="_blank" rel="noopener"><div><p class="tag">03</p><h3>Business network</h3><p class="txt">Members’ businesses and offers, with industry filters</p></div><p class="link"><span style="color:#FF2020;">OPEN →</span></p></a>
-<a class="pcard" href="https://maru-clubs.vercel.app/#payments" target="_blank" rel="noopener"><div><p class="tag">04</p><h3>Dues in rand</h3><p class="txt">Checkout for 2027 membership dues of R1,200</p></div><p class="link"><span style="color:#FF2020;">OPEN →</span></p></a>
-<a class="pcard" href="https://maru-clubs.vercel.app/#admin" target="_blank" rel="noopener"><div><p class="tag">05</p><h3>Admin command centre</h3><p class="txt">Capacity, waitlists, dues and a POPIA panel</p></div><p class="link"><span style="color:#FF2020;">OPEN →</span></p></a>
-<a class="pcard" href="https://maru-clubs.vercel.app/#clubs" target="_blank" rel="noopener"><div><p class="tag">06</p><h3>Many clubs, one platform</h3><p class="txt">The same platform re-skinned for a second club</p></div><p class="link"><span style="color:#FF2020;">OPEN →</span></p></a>
+<a class="pcard" href="https://maru-clubs.vercel.app/#home" target="_blank" rel="noopener"><div><p class="tag">01</p><h3>Member dashboard</h3><p class="txt">Stats, upcoming rides and announcements</p></div><p class="link"><span style="color:var(--yellow);">OPEN →</span></p></a>
+<a class="pcard" href="https://maru-clubs.vercel.app/#ride-blue-valley" target="_blank" rel="noopener"><div><p class="tag">02</p><h3>RSVP and waitlist</h3><p class="txt">A-Group full with a queue; B-Group has seats left</p></div><p class="link"><span style="color:var(--yellow);">OPEN →</span></p></a>
+<a class="pcard" href="https://maru-clubs.vercel.app/#network" target="_blank" rel="noopener"><div><p class="tag">03</p><h3>Business network</h3><p class="txt">Members’ businesses and offers, with industry filters</p></div><p class="link"><span style="color:var(--yellow);">OPEN →</span></p></a>
+<a class="pcard" href="https://maru-clubs.vercel.app/#payments" target="_blank" rel="noopener"><div><p class="tag">04</p><h3>Dues in rand</h3><p class="txt">Checkout for 2027 membership dues of R1,200</p></div><p class="link"><span style="color:var(--yellow);">OPEN →</span></p></a>
+<a class="pcard" href="https://maru-clubs.vercel.app/#admin" target="_blank" rel="noopener"><div><p class="tag">05</p><h3>Admin command centre</h3><p class="txt">Capacity, waitlists, dues and a POPIA panel</p></div><p class="link"><span style="color:var(--yellow);">OPEN →</span></p></a>
+<a class="pcard" href="https://maru-clubs.vercel.app/#clubs" target="_blank" rel="noopener"><div><p class="tag">06</p><h3>Many clubs, one platform</h3><p class="txt">The same platform re-skinned for a second club</p></div><p class="link"><span style="color:var(--yellow);">OPEN →</span></p></a>
 </div>
 <p class="source">Sample data only: nothing is saved and no payment is real. It works on a phone.</p>
 </section>
@@ -362,9 +385,9 @@ th{font-family:'IBM Plex Mono','Courier New',monospace;font-size:22px;letter-spa
 <p class="eyebrow">THE ASK</p>
 <h2 class="st">YOU’RE THE INVESTOR<br><em>AND THE CUSTOMER</em></h2>
 <div class="row" style="gap:24px;flex:1;">
-<div class="card in"><p class="bigred" style="color:#FFD9D4;">01</p><h3>Ride it</h3><p class="txt">Use the prototype with your own club and tell us what’s missing. You are the rider we’re building for.</p></div>
-<div class="card in d1"><p class="bigred" style="color:#FFD9D4;">02</p><h3>Open five doors</h3><p class="txt">Introductions to five club chairs or ride captains for the pilot.</p></div>
-<div class="card in d2"><p class="bigred" style="color:#FFD9D4;">03</p><h3>Back the test</h3><p class="txt">A validation tranche sized on real quotes. Scale money only if 3 of 5 pilot clubs pay.</p></div>
+<div class="card in"><p class="bigred" style="color:var(--yellow);">01</p><h3>Ride it</h3><p class="txt">Use the prototype with your own club and tell us what’s missing. You are the rider we’re building for.</p></div>
+<div class="card in d1"><p class="bigred" style="color:var(--yellow);">02</p><h3>Open five doors</h3><p class="txt">Introductions to five club chairs or ride captains for the pilot.</p></div>
+<div class="card in d2"><p class="bigred" style="color:var(--yellow);">03</p><h3>Back the test</h3><p class="txt">A validation tranche sized on real quotes. Scale money only if 3 of 5 pilot clubs pay.</p></div>
 </div>
 <div class="row" style="align-items:center;gap:32px;">
 <p class="pill" style="background:#0B0B0A;"><a href="https://maru-clubs.vercel.app/#about" target="_blank" rel="noopener">OPEN THE PROTOTYPE →</a></p>
