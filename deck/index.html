@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Maru Clubs">
 <meta property="og:title" content="Maru Clubs — Investor Deck">
-<meta property="og:description" content="A real gap, a small market and a cheap way to find out. 16 slides, with a clickable prototype.">
+<meta property="og:description" content="A real gap, a small market and a cheap way to find out. 19 slides, with a clickable prototype.">
 <meta property="og:url" content="https://maru-clubs.vercel.app/deck/">
 <meta property="og:image" content="https://maru-clubs.vercel.app/og-deck.png">
 <meta property="og:image:type" content="image/png">
@@ -129,7 +129,7 @@ tr[style*="FBE3E0"]{background:#FFF4C2!important;box-shadow:inset 6px 0 0 var(--
 .bar.hot{background:linear-gradient(90deg,#CC0000 0,#CC0000 calc(100% - 10px),var(--yellow) calc(100% - 10px))}
 .pcard:hover{border-color:var(--yellow)}
 .barval{color:inherit}
-#cover .pill,#cover .pill a{color:#fff}
+#cover .pill,#cover .pill a,#closing .pill,#closing .pill a{color:#fff}
 /* nav bar */
 #nav{position:fixed;left:0;right:0;bottom:0;height:44px;background:#111;border-top:1px solid #2a2a28;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 12px;color:#bbb;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;z-index:5}
 #nav button{background:#1c1c1a;color:#eee;border:1px solid #333;padding:7px 14px;font:inherit;cursor:pointer}
@@ -382,17 +382,64 @@ tr[style*="FBE3E0"]{background:#FFF4C2!important;box-shadow:inset 6px 0 0 var(--
 </div></div>
 </section>
 
+<section id="returns" class="light">
+<p class="eyebrow">THE NEXT THREE YEARS</p>
+<h2 class="st">WHAT THREE YEARS COULD LOOK LIKE<br><em>BASE CASE, PLACEHOLDER PRICES</em></h2>
+<div class="row" style="gap:48px;flex:1;">
+<div class="col grow" style="gap:18px;justify-content:center;">
+<p class="small">Revenue per year, rand, and clubs live at year end</p>
+<div class="barrow in"><p class="barlabel" style="width:150px;">Year 1</p><div class="bartrack"><div class="bar" style="width:160px;"></div><p class="barval">R155k <span class="small">· 6 clubs</span></p></div></div>
+<div class="barrow in d1"><p class="barlabel" style="width:150px;">Year 2</p><div class="bartrack"><div class="bar" style="width:427px;"></div><p class="barval">R413k <span class="small">· 17 clubs</span></p></div></div>
+<div class="barrow in d2"><p class="barlabel" style="width:150px;">Year 3</p><div class="bartrack"><div class="bar hot" style="width:700px;"></div><p class="barval">R677k <span class="small">· 29 clubs</span></p></div></div>
+<p class="small" style="margin-top:8px;">Clubs live: about 1%, 3% and 5% of 580 addressable. Revenue = subscriptions plus set-up fees.</p>
+</div>
+<div class="col" style="width:660px;gap:16px;">
+<div class="card" style="flex:none;padding:20px 28px;"><div class="row" style="align-items:flex-end;gap:20px;"><p class="big" style="font-size:84px;">R1.25M</p><p class="txt">revenue over three years</p></div></div>
+<div class="card" style="flex:none;padding:20px 28px;"><div class="row" style="align-items:flex-end;gap:20px;"><p class="big" style="font-size:84px;">R626k</p><p class="txt">recurring revenue at the end of Year 3</p></div></div>
+<div class="card accent" style="flex:none;"><p class="tag">BE HONEST ABOUT THIS</p><p class="txt">Cash-negative through Year 3 on placeholder costs (about −R352k), breaking even near 48 clubs. A slow-build subscription business, not a quick return.</p></div>
+</div>
+</div>
+<div class="card" style="flex:none;padding:24px 32px;gap:8px;"><p class="tag">ONE WAY TO READ IT · ILLUSTRATIVE, NOT A VALUATION</p><p class="txt">Each 1% of three-year revenue is about R12,450. Each 1% of the company, valued at 3× Year 3 recurring revenue, is about R18,800. What we offer is for us to shape together.</p></div>
+<p class="source">Maru Clubs business model, base case. Every price, cost and uptake rate is a placeholder to be replaced by pilot results.</p>
+</section>
+
+<section id="invest">
+<p class="eyebrow">THE INVESTMENT</p>
+<h2 class="st">R18,000 TO GET IT<br><em>READY TO LAUNCH AND TEST</em></h2>
+<div class="row" style="gap:24px;flex:1;">
+<div class="card accent in" style="flex:none;width:560px;justify-content:center;"><p class="bigred" style="font-size:150px;color:var(--yellow);">R18,000</p><p class="txt">The first step, and the only amount we are asking for today.</p></div>
+<div class="col grow" style="gap:20px;">
+<div class="card in d1"><p class="tag">01 · WHAT IT BUYS</p><p class="txt">A full, downloadable prototype, ready to launch and test with real clubs.</p></div>
+<div class="card in d2"><p class="tag">02 · WHAT WE OFFER YOU</p><p class="txt">Left open on purpose. Once you’ve seen the numbers and want to explore, we shape it together, with an attorney and an accountant.</p></div>
+<div class="card in d3"><p class="tag">03 · WHAT COMES AFTER</p><p class="txt">Pilot results decide the next step. The full plan (about R1.2M) is only discussed if 3 of 5 pilot clubs pay.</p></div>
+</div>
+</div>
+</section>
+
 <section id="ask" class="red">
 <p class="eyebrow">THE ASK</p>
 <h2 class="st">YOU’RE THE INVESTOR<br><em>AND THE CUSTOMER</em></h2>
 <div class="row" style="gap:24px;flex:1;">
 <div class="card in"><p class="bigred" style="color:var(--yellow);">01</p><h3>Ride it</h3><p class="txt">Use the prototype with your own club and tell us what’s missing. You are the rider we’re building for.</p></div>
 <div class="card in d1"><p class="bigred" style="color:var(--yellow);">02</p><h3>Open five doors</h3><p class="txt">Introductions to five club chairs or ride captains for the pilot.</p></div>
-<div class="card in d2"><p class="bigred" style="color:var(--yellow);">03</p><h3>Back the test</h3><p class="txt">A validation tranche sized on real quotes. Scale money only if 3 of 5 pilot clubs pay.</p></div>
+<div class="card in d2"><p class="bigred" style="color:var(--yellow);">03</p><h3>Back the test</h3><p class="txt">R18,000 to ready the prototype for launch and testing. Scale money only if 3 of 5 pilot clubs pay.</p></div>
 </div>
 <div class="row" style="align-items:center;gap:32px;">
 <p class="pill" style="background:#0B0B0A;"><a href="https://maru-clubs.vercel.app/#about" target="_blank" rel="noopener">OPEN THE PROTOTYPE →</a></p>
 <p class="small">Next step: a 30-minute walkthrough, then a ride.</p>
+</div>
+</section>
+
+<section id="closing" data-nofit="1" style="padding:0;display:none">
+<div class="hgrid"></div>
+<div style="position:absolute;left:640px;top:-90px;width:1944px;height:1296px;background:url('pbc-cyclist.jpg') center/cover no-repeat;opacity:.9"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(90deg,#080808 0%,#080808 38%,rgba(8,8,8,.55) 62%,rgba(8,8,8,.15) 100%),linear-gradient(0deg,#080808 0%,transparent 28%)"></div>
+<div class="col" style="position:absolute;left:128px;top:0;bottom:0;width:1250px;justify-content:center;gap:0">
+<span class="eyebrow">Next step</span>
+<h1 class="htitle">INTERESTED?<span class="ol">LET’S TALK</span></h1>
+<div class="redbar"></div>
+<p class="hbody">If this is something you’d like to explore, tell us. We’ll set up a 30-minute walkthrough of the prototype, go through the numbers together, and then talk about what an investment could look like.</p>
+<div class="row" style="align-items:center;gap:32px;"><p class="pill"><a href="https://maru-clubs.vercel.app/#about" target="_blank" rel="noopener">OPEN THE PROTOTYPE →</a></p><p class="small">Thank you, Phenyo.</p></div>
 </div>
 </section>
 
@@ -423,7 +470,7 @@ tr[style*="FBE3E0"]{background:#FFF4C2!important;box-shadow:inset 6px 0 0 var(--
 </section>
 
 </div></div>
-<div id="nav"><button id="prev" aria-label="Previous slide">← PREV</button><div class="mid"><span id="count">1 / 16</span><div id="bar"><i></i></div></div><button id="next" aria-label="Next slide">NEXT →</button></div>
+<div id="nav"><button id="prev" aria-label="Previous slide">← PREV</button><div class="mid"><span id="count">1 / 19</span><div id="bar"><i></i></div></div><button id="next" aria-label="Next slide">NEXT →</button></div>
 <script>
 (function(){
   var slides=[].slice.call(document.querySelectorAll('#stage section')),i=0,stage=document.getElementById('stage');
@@ -440,7 +487,7 @@ tr[style*="FBE3E0"]{background:#FFF4C2!important;box-shadow:inset 6px 0 0 var(--
   function show(n,push){
     i=Math.max(0,Math.min(slides.length-1,n));
     slides.forEach(function(s,k){s.classList.toggle('active',k===i)});
-    if(i>0)fitSlide(slides[i]);
+    if(i>0&&!slides[i].dataset.nofit)fitSlide(slides[i]);
     document.getElementById('count').textContent=(i+1)+' / '+slides.length;
     document.querySelector('#bar i').style.width=((i+1)/slides.length*100)+'%';
     if(push!==false){try{history.replaceState(null,'','#'+slides[i].id)}catch(e){}}
@@ -458,7 +505,7 @@ tr[style*="FBE3E0"]{background:#FFF4C2!important;box-shadow:inset 6px 0 0 var(--
   window.addEventListener('resize',fit);
   var h=location.hash.slice(1),k=slides.findIndex(function(s){return s.id===h});
   fit();show(k>=0?k:0,false);
-  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){if(i>0)fitSlide(slides[i])});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){if(i>0&&!slides[i].dataset.nofit)fitSlide(slides[i])});
 })();
 </script>
 </body>
