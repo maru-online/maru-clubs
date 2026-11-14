@@ -20,6 +20,7 @@
 <meta name="twitter:image" content="https://maru-clubs.vercel.app/og-cover.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>if(/[?&]embed=1/.test(location.search))document.documentElement.classList.add("embed")</script>
 <style>
 :root{--brand:#CC0000;--brand-hi:#FF2020;--black:#080808;--white:#F2F2ED;--grey:#141414;--mid:#242424;--muted:#8a8a8a;--ok:#00cc44;--yellow:#F5C518}
 *{box-sizing:border-box}
@@ -123,14 +124,79 @@ h1.page{font-family:'Bebas Neue';font-weight:400;font-size:clamp(34px,5vw,54px);
   .proto-bar .txt{display:none}
   .row.wrap{flex-wrap:wrap}
 }
+
+/* ===== v2: readability, yellow accents (matches deck), view switcher ===== */
+:root{--muted:#a6a6a0}
+.label{font-size:12px;color:var(--yellow);letter-spacing:.24em}
+.sec{font-size:12px;color:var(--yellow);letter-spacing:.2em;padding-bottom:8px;border-bottom:1px solid var(--mid);margin-bottom:14px}
+.ride .date{font-size:12.5px;color:var(--yellow);font-weight:500;min-width:84px}
+.ride .t{font-size:16px}
+.ride .m{font-size:13px}
+.stat .n{color:var(--yellow)}
+.stat .l{font-size:11.5px}
+.tag{font-size:12.5px}
+.badge{font-size:11px;padding:4px 10px}
+.btn{font-size:12px;color:var(--yellow)}
+.btn.sm{font-size:11px;padding:7px 12px}
+.btn.ghost,.btn.full,.btn.done{color:inherit}
+.btn.ghost{color:var(--white)}
+.btn.full{color:var(--brand-hi)}
+.btn.done{color:var(--ok)}
+.chip{font-size:12px;padding:8px 14px}
+.nav a{font-size:14.5px;padding:11px 20px}
+.nav a.on{color:var(--yellow)}
+.nav .sep{font-size:11px;color:#8a8a84}
+.brand .sub{font-size:10.5px}
+.tbl th{font-size:11.5px;color:var(--yellow);border-bottom:2px solid var(--brand);padding:12px 14px}
+.tbl td{font-size:14px;padding:14px}
+.kv{font-size:14px}
+.kv div:nth-child(odd){font-size:11.5px}
+.card .muted,.muted{color:var(--muted)}
+.callout{font-size:14px}
+.input{font-size:15px}
+.proto-bar{font-size:12px}
+.proto-bar .seg button{font-size:11.5px;padding:6px 12px;color:#f0b6b6}
+.proto-bar .seg button.on{background:var(--brand);color:var(--yellow)}
+.proto-bar .grp{display:flex;gap:10px;align-items:center}
+.mobnav a{font-size:10px;color:var(--muted)}
+.mobnav a.on{color:var(--yellow)}
+.mobnav a.on .ic{color:var(--yellow)}
+
+/* phone stage (desktop only) */
+#phone-stage{display:none}
+body.phone-mode .shell,body.phone-mode .mobnav{display:none}
+body.phone-mode #phone-stage{display:flex}
+#phone-stage{min-height:calc(100vh - 34px);align-items:center;justify-content:center;gap:56px;background:radial-gradient(ellipse at 50% 40%,#1a0000 0%,#080808 65%);padding:20px;overflow:hidden}
+#phone-wrap{width:414px;height:860px;flex:none;transform-origin:center center}
+.phone{width:414px;height:860px;border-radius:62px;background:#0b0b0b;padding:12px;position:relative;box-shadow:0 0 0 2px #2c2c2c,0 0 0 11px #141414,0 40px 90px rgba(0,0,0,.75),0 0 80px rgba(204,0,0,.18)}
+.phone::before{content:'';position:absolute;top:24px;left:50%;transform:translateX(-50%);width:112px;height:32px;background:#000;border-radius:20px;z-index:3}
+.phone iframe{width:390px;height:836px;border:0;border-radius:50px;background:#080808;display:block}
+#phone-note{max-width:260px;color:var(--muted);font-size:14px;line-height:1.6}
+#phone-note b{display:block;font-family:'Bebas Neue';font-weight:400;font-size:30px;letter-spacing:.04em;color:var(--white);line-height:1;margin-bottom:10px}
+#phone-note b em{font-style:normal;color:var(--yellow)}
+@media (max-width:1000px){#phone-note{display:none}}
+/* inside the phone frame */
+.embed .proto-bar{display:none}
+.embed .shell{min-height:100vh}
+.embed main{padding-top:58px}
+.embed{scrollbar-width:none}
+.embed::-webkit-scrollbar{display:none}
+/* real phones: native mobile layout, no switcher */
+@media (max-width:900px){#vseg{display:none}.proto-bar .grp{gap:0}}
 </style>
 </head>
 <body>
 <div class="proto-bar">
   <span><span style="color:#ff6b6b">●</span> <span class="txt">INTERACTIVE PROTOTYPE · SAMPLE DATA · </span>MARU CLUBS</span>
-  <div class="seg" role="group" aria-label="View as">
-    <button id="as-member" class="on" onclick="setRole('member')">MEMBER</button>
-    <button id="as-admin" onclick="setRole('admin')">ADMIN</button>
+  <div class="grp">
+    <div class="seg" id="vseg" role="group" aria-label="Device">
+      <button id="v-desktop" class="on" onclick="setView('desktop')">DESKTOP</button>
+      <button id="v-iphone" onclick="setView('iphone')">IPHONE</button>
+    </div>
+    <div class="seg" role="group" aria-label="View as">
+      <button id="as-member" class="on" onclick="setRole('member')">MEMBER</button>
+      <button id="as-admin" onclick="setRole('admin')">ADMIN</button>
+    </div>
   </div>
 </div>
 <div class="shell">
@@ -141,6 +207,7 @@ h1.page{font-family:'Bebas Neue';font-weight:400;font-size:clamp(34px,5vw,54px);
   </aside>
   <main id="view" aria-live="polite"></main>
 </div>
+<div id="phone-stage"><div id="phone-wrap"><div class="phone"><iframe id="phone-frame" title="Maru Clubs on iPhone" loading="lazy"></iframe></div></div><div id="phone-note"><b>THE <em>IPHONE</em> VIEW</b>Tap through it the way a member would on their phone. Switch between Member and Admin at the top, or back to Desktop for the full layout.</div></div>
 <nav class="mobnav" id="mobnav"></nav>
 <div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()"><div class="modal" id="modal-body"></div></div>
 <div class="toast" id="toast"></div>
@@ -186,7 +253,7 @@ const adminNav=[['admin','Command centre','◉'],['rides','Rides','◆'],['netwo
 function renderNav(active){
   const items = role==='admin'?adminNav:memberNav;
   $('#nav').innerHTML = `<div class="sep">${role==='admin'?'ADMIN':'MEMBER'}</div>` + items.map(([k,l])=>`<a href="#${k}" class="${k===active||(active==='ride'&&k==='rides')?'on':''}">${l}</a>`).join('') + `<div class="sep">ABOUT</div><a href="#about" class="${active==='about'?'on':''}">What this prototype shows</a>`;
-  $('#mobnav').innerHTML = items.map(([k,l,ic])=>`<a href="#${k}" class="${k===active||(active==='ride'&&k==='rides')?'on':''}"><span class="ic">${ic}</span>${l.split(' ')[0].toUpperCase()}</a>`).join('');
+  $('#mobnav').innerHTML = items.map(([k,l,ic])=>`<a href="#${k}" class="${k===active||(active==='ride'&&k==='rides')?'on':''}"><span class="ic">${ic}</span>${(l==='Dashboard'?'Home':l.split(' ')[0]).toUpperCase()}</a>`).join('');
 }
 
 // ---------- Views ----------
@@ -353,7 +420,40 @@ function route(){
   else html=({home:vHome,rides:vRides,network:vNetwork,payments:vPayments,admin:vAdmin,clubs:vClubs,about:vAbout}[h]||vHome)();
   $('#view').innerHTML=html; renderNav(active); window.scrollTo(0,0);
 }
-window.addEventListener('hashchange',route); route();
+
+// ---------- Device view: Desktop or iPhone ----------
+const EMBED=document.documentElement.classList.contains('embed');
+const _setRole=setRole;
+setRole=function(r){
+  if(document.body.classList.contains('phone-mode')){
+    role=r;$('#as-member').classList.toggle('on',r==='member');$('#as-admin').classList.toggle('on',r==='admin');
+    try{$('#phone-frame').contentWindow.setRole(r)}catch(e){}
+  } else _setRole(r);
+};
+function fitPhone(){
+  const w=$('#phone-wrap'); if(!w) return;
+  const k=Math.min(1,(window.innerHeight-70)/890,(window.innerWidth-40)/430);
+  w.style.transform='scale('+k+')'; w.style.margin=((860*k-860)/2)+'px '+((414*k-414)/2)+'px';
+}
+function setView(m){
+  if(EMBED) return;
+  const f=$('#phone-frame'), body=document.body;
+  if(m==='iphone'){
+    f.onload=function(){ if(role==='admin'){try{f.contentWindow.setRole('admin')}catch(e){}} };
+    f.src=location.pathname+'?embed=1'+(location.hash||'#home');
+    body.classList.add('phone-mode'); fitPhone();
+  } else {
+    if(body.classList.contains('phone-mode')){
+      try{const h=f.contentWindow.location.hash; if(h&&h!==location.hash) history.replaceState(null,'',location.pathname+location.search+h)}catch(e){}
+      body.classList.remove('phone-mode'); f.removeAttribute('src'); route();
+    }
+  }
+  $('#v-desktop').classList.toggle('on',m!=='iphone'); $('#v-iphone').classList.toggle('on',m==='iphone');
+  try{const u=new URL(location.href); if(m==='iphone')u.searchParams.set('view','iphone'); else u.searchParams.delete('view'); history.replaceState(null,'',u.pathname+u.search+u.hash)}catch(e){}
+}
+window.addEventListener('resize',fitPhone);
+window.addEventListener('hashchange',()=>{if(!document.body.classList.contains('phone-mode'))route()}); route();
+if(!EMBED&&/[?&]view=iphone/.test(location.search)&&window.innerWidth>900)setView('iphone');
 </script>
 </body>
 </html>
