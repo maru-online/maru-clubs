@@ -185,50 +185,55 @@ body.phone-mode #phone-stage{display:flex}
 /* real phones: native mobile layout, no switcher */
 @media (max-width:900px){#vseg{display:none}.proto-bar .grp{gap:0}}
 
-/* ===== welcome screen ===== */
+@font-face{font-family:'WBebas';font-weight:400;font-display:block;src:url(deck/fonts/bebas-neue-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'WDM';font-weight:300;font-display:block;src:url(deck/fonts/dm-sans-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'WMono';font-weight:400;font-display:block;src:url(deck/fonts/ibm-plex-mono-latin-400-normal.woff2) format('woff2')}
+/* ===== welcome screen (replica of the deck cover) ===== */
 #welcome{display:none;position:fixed;inset:0;z-index:500;background:#080808;overflow:hidden}
 .welcome-on #welcome{display:block}
 .welcome-on body{overflow:hidden}
-#welcome .ph{position:absolute;right:-4%;top:-9%;width:76%;height:118%;background:url('deck/pbc-cyclist.jpg') center/cover no-repeat;opacity:.9}
-#welcome .shade{position:absolute;inset:0;background:linear-gradient(90deg,#080808 0%,#080808 38%,rgba(8,8,8,.55) 62%,rgba(8,8,8,.15) 100%),linear-gradient(0deg,#080808 0%,transparent 28%)}
-#welcome .col{position:absolute;left:7%;top:0;bottom:0;width:min(760px,60%);display:flex;flex-direction:column;justify-content:center}
-#welcome .eyebrow{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.24em;color:var(--yellow);text-transform:uppercase;margin-bottom:22px}
-#welcome h1{font-family:'Bebas Neue';font-weight:400;letter-spacing:.04em;line-height:.92;text-transform:uppercase;color:var(--white);font-size:clamp(46px,6.2vw,96px);margin:0}
-#welcome h1 .ol{display:block;color:transparent;-webkit-text-stroke:1.5px var(--brand);font-size:.5em;letter-spacing:.06em;margin-bottom:.12em}
-#welcome .bar{width:64px;height:4px;background:var(--brand);margin:26px 0}
-#welcome p.lead{font-family:'DM Sans',system-ui,sans-serif;font-weight:300;font-size:clamp(15px,1.45vw,20px);line-height:1.55;color:#ccccca;max-width:540px;margin:0 0 30px}
-#welcome .ctas{display:flex;gap:14px;flex-wrap:wrap}
-#welcome .btn{font-size:13px;padding:15px 26px;letter-spacing:.14em}
-#welcome .foot{position:absolute;left:7%;bottom:26px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.2em;color:#8a8a84;text-transform:uppercase}
-@media (max-width:900px){
- #welcome .ph{right:0;left:0;top:0;width:100%;height:56%;opacity:.95}
- #welcome .shade{background:linear-gradient(0deg,#080808 0%,#080808 40%,rgba(8,8,8,.6) 58%,rgba(8,8,8,.1) 100%)}
- #welcome .col{left:0;right:0;width:auto;top:auto;bottom:0;padding:0 24px 76px;justify-content:flex-end}
- #welcome h1{font-size:clamp(40px,13vw,64px)}
- #welcome .bar{margin:18px 0}
- #welcome .dsk{display:none}
- #welcome .btn{width:100%;text-align:center}
- #welcome .foot{left:24px;bottom:28px}
-}
-.embed #welcome .ph{right:0;left:0;top:0;width:100%;height:56%}
-.embed #welcome .shade{background:linear-gradient(0deg,#080808 0%,#080808 40%,rgba(8,8,8,.6) 58%,rgba(8,8,8,.1) 100%)}
-.embed #welcome .col{left:0;right:0;width:auto;top:auto;bottom:0;padding:0 24px 76px;justify-content:flex-end}
-.embed #welcome h1{font-size:46px}
-.embed #welcome .bar{margin:18px 0}
-.embed #welcome .dsk{display:none}
-.embed #welcome .btn{width:100%;text-align:center}
-.embed #welcome .foot{left:24px;bottom:28px}
+#welcome .stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center;overflow:hidden;background:#080808}
+#welcome .hgrid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(204,0,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(204,0,0,.05) 1px,transparent 1px);background-size:120px 120px}
+#welcome .eyebrow{font-family:'WMono','IBM Plex Mono',monospace;font-size:24px;letter-spacing:.3em;text-transform:uppercase;color:#F5C518;margin:0;display:block}
+#welcome .htitle{font-family:'WBebas','Bebas Neue',sans-serif;font-weight:400;letter-spacing:.04em;color:#F2F2ED;font-size:132px;line-height:.88;margin:24px 0 8px}
+#welcome .htitle .ol{color:transparent;-webkit-text-stroke:3px #CC0000;display:block;white-space:nowrap}
+#welcome .redbar{position:relative;width:72px;height:4px;background:#CC0000;margin:20px 0 28px}
+#welcome .redbar::after{content:'';position:absolute;left:72px;top:0;width:24px;height:4px;background:#F5C518}
+#welcome .hbody{font-family:'WDM','DM Sans',sans-serif;font-size:34px;line-height:1.6;color:#CCCCCA;font-weight:300;max-width:1000px;margin:0 0 40px}
+#welcome .pill{display:inline-block;border:0;cursor:pointer;background:#CC0000;color:#fff;font-family:'WMono','IBM Plex Mono',monospace;font-size:26px;letter-spacing:3px;padding:18px 32px;text-transform:uppercase}
+#welcome .pill.ghost{background:transparent;border:1px solid #3a3a3a;margin-left:18px}
+#welcome .pill:hover{background:#FF2020}
+#welcome .pill.ghost:hover{background:transparent;border-color:#777}
+#welcome .mob{display:none}
+@media (max-width:900px){#welcome .stage{display:none}#welcome .mob{display:block}}
+.embed #welcome .stage{display:none}.embed #welcome .mob{display:block}
+#welcome .mob .ph{position:absolute;left:0;right:0;top:0;height:56%;background:url('deck/pbc-cyclist.jpg') center/cover no-repeat;opacity:.9}
+#welcome .mob .shade{position:absolute;inset:0;background:linear-gradient(0deg,#080808 0%,#080808 40%,rgba(8,8,8,.6) 58%,rgba(8,8,8,.1) 100%)}
+#welcome .mob .col{position:absolute;left:0;right:0;bottom:0;padding:0 24px 40px}
+#welcome .mob .eyebrow{font-size:11px;letter-spacing:.22em}
+#welcome .mob .htitle{font-size:clamp(40px,13vw,64px);margin:14px 0 4px}
+#welcome .mob .htitle .ol{-webkit-text-stroke:1.5px #CC0000;white-space:normal}
+#welcome .mob .redbar{margin:16px 0 18px}
+#welcome .mob .hbody{font-size:15px;line-height:1.55;margin:0 0 24px}
+#welcome .mob .pill{display:block;width:100%;text-align:center;font-size:13px;letter-spacing:.14em;padding:16px 0}
+.embed #welcome .mob .htitle{font-size:46px}
 </style>
 </head>
 <body>
 <div id="welcome" role="dialog" aria-label="Welcome to Maru Cycling">
-<div class="ph"></div><div class="shade"></div>
-<div class="col"><span class="eyebrow">Maru Online · Interactive prototype</span>
-<h1><span class="ol">South Africa’s weekend</span>The club app riders don’t have yet</h1>
-<div class="bar"></div>
-<p class="lead">Rides, waitlists, dues and a members’ network for private social cycling clubs. Built on the PBC design, working today on sample data.</p>
-<div class="ctas"><button class="btn" onclick="enterApp()">Enter the prototype →</button><button class="btn ghost dsk" onclick="enterApp('iphone')">View as iPhone</button></div></div>
-<div class="foot">Sample data · nothing is saved</div></div>
+<div class="stage" id="wstage"><div class="hgrid"></div>
+<div style="position:absolute;left:640px;top:-90px;width:1944px;height:1296px;background:url('deck/pbc-cyclist.jpg') center/cover no-repeat;opacity:.9"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(90deg,#080808 0%,#080808 38%,rgba(8,8,8,.55) 62%,rgba(8,8,8,.15) 100%),linear-gradient(0deg,#080808 0%,transparent 28%)"></div>
+<div style="position:absolute;left:128px;top:0;bottom:0;width:1250px;display:flex;flex-direction:column;justify-content:center"><span class="eyebrow">Maru Online · For Phenyo Mathopa · November 2026</span>
+<h1 class="htitle">THE CLUB APP<span class="ol">SOUTH AFRICA’S WEEKEND</span>RIDERS DON’T HAVE YET</h1>
+<div class="redbar"></div>
+<p class="hbody">Rides, waitlists, dues and a members’ network for private social cycling clubs. Built on the PBC design, and working today on sample data.</p>
+<div><button class="pill" onclick="enterApp()">ENTER THE PROTOTYPE →</button><button class="pill ghost" onclick="enterApp('iphone')">VIEW AS IPHONE</button></div></div></div>
+<div class="mob"><div class="ph"></div><div class="shade"></div><div class="col"><span class="eyebrow">Maru Online · For Phenyo Mathopa · November 2026</span>
+<h1 class="htitle">THE CLUB APP<span class="ol">SOUTH AFRICA’S WEEKEND</span>RIDERS DON’T HAVE YET</h1>
+<div class="redbar"></div>
+<p class="hbody">Rides, waitlists, dues and a members’ network for private social cycling clubs. Built on the PBC design, and working today on sample data.</p>
+<div><button class="pill" onclick="enterApp()">ENTER THE PROTOTYPE →</button></div></div></div></div>
 <div class="proto-bar">
   <span><span style="color:#ff6b6b">●</span> <span class="txt">INTERACTIVE PROTOTYPE · SAMPLE DATA · </span>MARU CYCLING</span>
   <div class="grp">
@@ -495,7 +500,8 @@ function setView(m,w){
   $('#v-desktop').classList.toggle('on',m!=='iphone'); $('#v-iphone').classList.toggle('on',m==='iphone');
   try{const u=new URL(location.href); if(m==='iphone')u.searchParams.set('view','iphone'); else u.searchParams.delete('view'); history.replaceState(null,'',u.pathname+u.search+u.hash)}catch(e){}
 }
-window.addEventListener('resize',fitPhone);
+function fitWelcome(){const st=document.getElementById('wstage');if(!st)return;const k=Math.min(innerWidth/1920,innerHeight/1080);st.style.transform='translate(-50%,-50%) scale('+k+')'}
+window.addEventListener('resize',()=>{fitPhone();fitWelcome()});fitWelcome();
 window.addEventListener('hashchange',()=>{if(!document.body.classList.contains('phone-mode'))route()}); route();
 if(!EMBED&&/[?&]view=iphone/.test(location.search)&&window.innerWidth>900){var _w=document.documentElement.classList.contains('welcome-on');document.documentElement.classList.remove('welcome-on');setView('iphone',_w)}
 </script>
