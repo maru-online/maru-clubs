@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maru Clubs — Interactive Prototype</title>
+<meta name="description" content="Clickable prototype of Maru Clubs, a club platform for private social cycling clubs in South Africa. Sample data only.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Maru Clubs">
+<meta property="og:title" content="Maru Clubs — Interactive Prototype">
+<meta property="og:description" content="Rides, waitlists, rand payments and a members' business network for South African cycling clubs. Tap through it on your phone. Sample data only.">
+<meta property="og:url" content="https://maru-clubs.vercel.app/">
+<meta property="og:image" content="https://maru-clubs.vercel.app/og-cover.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Maru Clubs — a platform for South African cycling clubs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://maru-clubs.vercel.app/og-cover.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--brand:#CC0000;--brand-hi:#FF2020;--black:#080808;--white:#F2F2ED;--grey:#141414;--mid:#242424;--muted:#8a8a8a;--ok:#00cc44}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit}
+.display{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-weight:400}
+.mono{font-family:'IBM Plex Mono',monospace}
+.label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--brand)}
+.muted{color:var(--muted)}
+.proto-bar{position:sticky;top:0;z-index:30;background:#1a0000;border-bottom:1px solid #3a0000;padding:8px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em}
+.proto-bar .seg{display:flex;border:1px solid #3a0000}
+.proto-bar .seg button{background:none;border:0;padding:5px 10px;cursor:pointer;color:#e9a3a3;font-family:inherit;font-size:11px;letter-spacing:.08em}
+.proto-bar .seg button.on{background:var(--brand);color:#fff}
+.shell{display:flex;min-height:calc(100vh - 34px)}
+.sidebar{width:228px;flex-shrink:0;background:#0d0d0d;border-right:1px solid var(--mid);padding:22px 0;position:sticky;top:34px;height:calc(100vh - 34px);display:flex;flex-direction:column}
+.brand{padding:0 20px 22px;border-bottom:1px solid var(--mid);margin-bottom:12px}
+.brand .mark{display:flex;align-items:center;gap:10px}
+.brand .logo{width:34px;height:34px;background:var(--brand);display:grid;place-items:center;font-family:'Bebas Neue';font-size:18px;color:#fff;letter-spacing:.04em}
+.brand .name{font-family:'Bebas Neue';font-size:20px;letter-spacing:.06em;line-height:1}
+.brand .sub{font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.2em;color:var(--muted);margin-top:4px}
+.nav a{display:flex;align-items:center;gap:10px;padding:10px 20px;font-size:13.5px;color:var(--muted);text-decoration:none;border-left:2px solid transparent}
+.nav a:hover{color:var(--white);background:#141414}
+.nav a.on{color:var(--white);background:var(--mid);border-left-color:var(--brand)}
+.nav .sep{font-family:'IBM Plex Mono';font-size:9.5px;letter-spacing:.22em;color:#555;padding:16px 20px 6px}
+.sidebar .foot{margin-top:auto;padding:14px 20px;border-top:1px solid var(--mid);font-size:12px}
+main{flex:1;min-width:0;padding:36px 40px 80px;max-width:1180px}
+h1.page{font-family:'Bebas Neue';font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1;margin:10px 0 6px;letter-spacing:.04em}
+.redbar{width:48px;height:3px;background:var(--brand);margin:14px 0 28px}
+.grid{display:grid;gap:2px}
+.stats{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-bottom:28px}
+.card{background:var(--grey);border:1px solid var(--mid);border-radius:2px;padding:18px 20px}
+.stat .n{font-family:'Bebas Neue';font-size:44px;line-height:1}
+.stat .l{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.18em;color:var(--muted);margin-top:6px;text-transform:uppercase}
+.two{grid-template-columns:minmax(0,1fr) 340px;align-items:start}
+.sec{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--brand);letter-spacing:.2em;margin:0 0 12px;text-transform:uppercase}
+.row{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.ride .date{font-family:'IBM Plex Mono';font-size:10.5px;color:var(--brand);min-width:78px}
+.ride .t{font-size:15px;font-weight:500}
+.ride .m{font-size:12px;color:var(--muted);margin-top:3px}
+.btn{background:var(--brand);color:#fff;border:0;padding:9px 16px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.12em;cursor:pointer;text-transform:uppercase;white-space:nowrap;text-decoration:none;display:inline-block}
+.btn:hover{background:var(--brand-hi)}
+.btn.ghost{background:transparent;border:1px solid #3a3a3a;color:var(--white)}
+.btn.ghost:hover{border-color:#666}
+.btn.full{background:#1a0000;color:var(--brand);border:1px solid #3a0000}
+.btn.done{background:#001a00;color:var(--ok);border:1px solid #003300}
+.btn.sm{padding:6px 11px;font-size:10px}
+.badge{display:inline-block;padding:3px 9px;font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.08em;border-radius:2px;white-space:nowrap}
+.b-red{background:#1a0000;color:var(--brand);border:1px solid #3a0000}
+.b-green{background:#001a00;color:var(--ok);border:1px solid #003300}
+.b-grey{background:var(--mid);color:#bbb}
+.b-amber{background:#1f1600;color:#f0b429;border:1px solid #3a2a00}
+.bar{height:6px;background:#222;border-radius:3px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--brand)}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{text-align:left;font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.14em;color:var(--muted);padding:10px 14px;border-bottom:1px solid var(--mid);font-weight:400;text-transform:uppercase}
+.tbl td{padding:13px 14px;font-size:13px;border-bottom:1px solid #1a1a1a;color:#d6d6d0}
+.tag{font-size:11px;color:var(--muted)}
+.input{width:100%;background:#0d0d0d;border:1px solid var(--mid);color:var(--white);padding:11px 14px;font:inherit;font-size:14px;outline:none}
+.input:focus{border-color:var(--brand)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 18px}
+.chip{background:transparent;border:1px solid #333;color:#bbb;padding:6px 12px;font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.08em;cursor:pointer}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.avatar{width:42px;height:42px;border-radius:50%;background:var(--mid);display:grid;place-items:center;font-family:'Bebas Neue';font-size:18px;color:#ddd;flex-shrink:0}
+.people{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.pace{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;margin:18px 0}
+.callout{border-left:3px solid var(--brand);background:#110000;padding:14px 18px;font-size:13px;line-height:1.55;margin:18px 0}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
+.modal-bg.show{display:flex}
+.modal{background:var(--grey);border:1px solid var(--mid);max-width:440px;width:100%;padding:26px}
+.toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%) translateY(20px);background:#fff;color:#111;padding:11px 18px;font-size:13px;opacity:0;transition:.25s;z-index:60;pointer-events:none;max-width:90vw}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.hero-club{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px}
+.clubcard{cursor:pointer;border:1px solid var(--mid);background:var(--grey);padding:18px;text-align:left}
+.clubcard.on{outline:2px solid var(--brand)}
+.mobnav{display:none}
+.kv{display:grid;grid-template-columns:120px 1fr;gap:6px 14px;font-size:13px}
+.kv div:nth-child(odd){font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;padding-top:2px}
+.hide{display:none!important}
+@media (max-width:900px){
+  .sidebar{display:none}
+  main{padding:22px 16px 110px}
+  .two{grid-template-columns:1fr}
+  .mobnav{display:flex;position:fixed;bottom:0;left:0;right:0;background:#0d0d0d;border-top:1px solid var(--mid);z-index:40;justify-content:space-around;padding:6px 0 10px}
+  .mobnav a{flex:1;text-align:center;text-decoration:none;font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.1em;color:var(--muted);padding:6px 0}
+  .mobnav a .ic{display:block;font-size:17px;margin-bottom:3px}
+  .mobnav a.on{color:var(--white)}
+  .mobnav a.on .ic{color:var(--brand)}
+  .tbl .hm{display:none}
+  .proto-bar .txt{display:none}
+  .row.wrap{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+<div class="proto-bar">
+  <span><span style="color:#ff6b6b">●</span> <span class="txt">INTERACTIVE PROTOTYPE · SAMPLE DATA · </span>MARU CLUBS</span>
+  <div class="seg" role="group" aria-label="View as">
+    <button id="as-member" class="on" onclick="setRole('member')">MEMBER</button>
+    <button id="as-admin" onclick="setRole('admin')">ADMIN</button>
+  </div>
+</div>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="mark"><div class="logo" id="club-logo">PBC</div><div><div class="name" id="club-name">PROUD BEGINNERS</div><div class="sub" id="club-sub">CYCLING CLUB · PRETORIA</div></div></div></div>
+    <nav class="nav" id="nav"></nav>
+    <div class="foot"><div class="row"><div class="avatar" style="width:32px;height:32px;font-size:14px">PM</div><div style="flex:1"><div style="font-size:13px">Phenyo M.</div><div class="tag" id="who-role">Member · A-Group</div></div></div></div>
+  </aside>
+  <main id="view" aria-live="polite"></main>
+</div>
+<nav class="mobnav" id="mobnav"></nav>
+<div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()"><div class="modal" id="modal-body"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ---------- Sample data (illustrative only) ----------
+const clubs = {
+  pbc:{key:'pbc',url:'app.proudbeginners.co.za',logo:'PBC',name:'PROUD BEGINNERS',sub:'CYCLING CLUB · PRETORIA',brand:'#CC0000',hi:'#FF2020',members:112,city:'Pretoria'},
+  coastal:{key:'coastal',url:'Own web address (example club)',logo:'CS',name:'COASTAL SPOKES',sub:'SOCIAL RIDES · DURBAN',brand:'#0A84C6',hi:'#2BA3E3',members:74,city:'Durban'},
+  gravel:{key:'gravel',url:'Own web address (example club)',logo:'CG',name:'CAPE GRAVEL COLLECTIVE',sub:'GRAVEL & ROAD · CAPE TOWN',brand:'#C77A12',hi:'#E3962E',members:58,city:'Cape Town'}
+};
+let club = clubs.pbc, role = 'member';
+const rides = [
+  {id:'blue-valley',date:'SAT 21 NOV',time:'05:30',title:'Blue Valley Morning Blast',km:65,climb:'720 m',start:'Blue Valley Golf Estate, main gate',leader:'Sipho N.',sweep:'Lerato K.',groups:[{g:'A-Group',pace:'30–32 km/h',cap:20,rsvp:20,wait:3},{g:'B-Group',pace:'25–27 km/h',cap:15,rsvp:11,wait:0}],fee:0},
+  {id:'hartbeespoort',date:'SAT 28 NOV',time:'05:15',title:'Hartbeespoort Dam Challenge',km:95,climb:'1,150 m',start:'Pelindaba Rd fuel stop',leader:'Pieter v.d.M.',sweep:'Naledi S.',groups:[{g:'A-Group',pace:'30–32 km/h',cap:25,rsvp:18,wait:0},{g:'B-Group',pace:'25–27 km/h',cap:20,rsvp:20,wait:2}],fee:150},
+  {id:'pretoria-loop',date:'SUN 6 DEC',time:'06:00',title:'Pretoria East Coffee Loop',km:45,climb:'380 m',start:'Menlyn Maine coffee bar',leader:'Thandi M.',sweep:'Johan B.',groups:[{g:'B-Group',pace:'25–27 km/h',cap:25,rsvp:9,wait:0},{g:'Social',pace:'20–22 km/h',cap:30,rsvp:12,wait:0}],fee:0}
+];
+const myRsvp = {}; // rideId -> {g, status:'in'|'wait', pos}
+const people = [
+  {i:'SN',n:'Sipho Ndlovu',r:'Ride leader · A-Group',biz:'Ndlovu Attorneys',ind:'Legal',city:'Pretoria East',offer:'Commercial contracts, 10% for members'},
+  {i:'LK',n:'Lerato Khumalo',r:'Member · B-Group',biz:'Khumalo Architects',ind:'Property',city:'Brooklyn',offer:'Free first consult on home renovations'},
+  {i:'PV',n:'Pieter van der Merwe',r:'Member · A-Group',biz:'VDM Physio',ind:'Health',city:'Centurion',offer:'Bike fits and sports massage'},
+  {i:'NS',n:'Naledi Sithole',r:'Committee · Treasurer',biz:'Sithole & Co. Accountants',ind:'Finance',city:'Hatfield',offer:'Small-business tax returns'},
+  {i:'JB',n:'Johan Botha',r:'Member · Social',biz:'Botha Logistics',ind:'Logistics',city:'Silverton',offer:'Event transport for bikes'},
+  {i:'TM',n:'Thandi Mokoena',r:'Ride leader · B-Group',biz:'Mokoena Digital',ind:'Tech',city:'Menlyn',offer:'Websites for member businesses'},
+  {i:'AR',n:'Ayesha Rawat',r:'Member · B-Group',biz:'Rawat Wealth',ind:'Finance',city:'Waterkloof',offer:'Retirement planning sessions'},
+  {i:'KD',n:'Kabelo Dlamini',r:'Member · A-Group',biz:'Dlamini Construction',ind:'Property',city:'Pretoria North',offer:'Site visits on request'}
+];
+let dues = {paid:false};
+
+// ---------- Helpers ----------
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2600)}
+function openModal(html){$('#modal-body').innerHTML=html;$('#modal').classList.add('show')}
+function closeModal(){$('#modal').classList.remove('show')}
+function header(label,title,lead){return `<div class="label">${label}</div><h1 class="page">${title}</h1>${lead?`<p class="muted" style="max-width:640px;margin:6px 0 0;font-size:14px;line-height:1.55">${lead}</p>`:''}<div class="redbar"></div>`}
+function seats(g){return g.cap-g.rsvp}
+
+const memberNav=[['home','Dashboard','◉'],['rides','Rides','◆'],['network','Network','◎'],['payments','Payments','R'],['clubs','Clubs','▣']];
+const adminNav=[['admin','Command centre','◉'],['rides','Rides','◆'],['network','Members','◎'],['payments','Payments','R'],['clubs','Clubs','▣']];
+
+function renderNav(active){
+  const items = role==='admin'?adminNav:memberNav;
+  $('#nav').innerHTML = `<div class="sep">${role==='admin'?'ADMIN':'MEMBER'}</div>` + items.map(([k,l])=>`<a href="#${k}" class="${k===active||(active==='ride'&&k==='rides')?'on':''}">${l}</a>`).join('') + `<div class="sep">ABOUT</div><a href="#about" class="${active==='about'?'on':''}">What this prototype shows</a>`;
+  $('#mobnav').innerHTML = items.map(([k,l,ic])=>`<a href="#${k}" class="${k===active||(active==='ride'&&k==='rides')?'on':''}"><span class="ic">${ic}</span>${l.split(' ')[0].toUpperCase()}</a>`).join('');
+}
+
+// ---------- Views ----------
+function vHome(){
+  const next = rides.slice(0,3).map(rideRow).join('');
+  return header('Member dashboard',`WELCOME BACK,<br><span style="color:var(--brand)">PHENYO.</span>`) +
+  `<div class="grid stats">
+    <div class="card stat"><div class="n">14</div><div class="l">Rides this year</div></div>
+    <div class="card stat"><div class="n">812<span style="font-size:22px">km</span></div><div class="l">Club kilometres</div></div>
+    <div class="card stat"><div class="n">A</div><div class="l">Pace group</div></div>
+    <div class="card stat"><div class="n" style="color:${dues.paid?'var(--ok)':'#f0b429'}">${dues.paid?'PAID':'DUE'}</div><div class="l">2027 membership</div></div>
+  </div>
+  <div class="grid two">
+    <div><div class="sec">Upcoming rides</div><div class="grid">${next}</div>
+      <a class="btn ghost" href="#rides" style="margin-top:14px">See the full calendar</a></div>
+    <div><div class="sec">Announcements</div>
+      <div class="grid">
+        <div class="card"><div class="row"><b style="font-weight:500;font-size:13.5px">December calendar is live</b><span class="mono tag">2 Nov</span></div><p class="muted" style="font-size:12.5px;line-height:1.55;margin:8px 0 0">A-Group spots fill fast. Join the waitlist if a ride is full: you move up automatically when someone drops out.</p></div>
+        <div class="card"><div class="row"><b style="font-weight:500;font-size:13.5px">Members' breakfast, 28 Nov</b><span class="mono tag">30 Oct</span></div><p class="muted" style="font-size:12.5px;line-height:1.55;margin:8px 0 0">After the Hartbeespoort ride. Two members will pitch their businesses. See the Network tab.</p></div>
+        ${dues.paid?'':`<a class="card" href="#payments" style="text-decoration:none;border-color:#3a2a00;background:#1a1400"><span class="badge b-amber">ACTION</span><div style="font-size:13.5px;margin-top:8px;font-weight:500">2027 membership is due</div><div class="muted" style="font-size:12.5px;margin-top:4px">Pay R1,200 by card or Instant EFT →</div></a>`}
+      </div></div>
+  </div>`;
+}
+function rideRow(r){
+  const mine = myRsvp[r.id];
+  const anyOpen = r.groups.some(g=>seats(g)>0);
+  const total = r.groups.reduce((s,g)=>s+g.rsvp,0), cap=r.groups.reduce((s,g)=>s+g.cap,0);
+  let b = mine ? (mine.status==='in'?`<span class="btn done sm">YOU'RE IN</span>`:`<span class="btn full sm">WAITLIST #${mine.pos}</span>`) : `<span class="btn sm ${anyOpen?'':'full'}">${anyOpen?'RSVP':'JOIN WAITLIST'}</span>`;
+  return `<a class="card ride row wrap" href="#ride-${r.id}" style="text-decoration:none">
+    <div class="row" style="justify-content:flex-start;gap:18px"><span class="date">${r.date}</span><div><div class="t">${esc(r.title)}</div><div class="m">${r.km} km · ${r.climb} climbing · ${r.groups.map(g=>g.g).join(', ')}</div></div></div>
+    <div class="row" style="gap:12px"><span class="tag mono">${total}/${cap}</span>${b}</div></a>`;
+}
+function vRides(){
+  return header('Ride calendar','RIDES','Every ride has pace groups with their own caps. When a group is full, riders join a waitlist and move up automatically if someone drops out.') +
+  `<div class="grid">${rides.map(rideRow).join('')}</div>
+   <div class="callout">Free tools show a full event as "full". Here a full group keeps a queue, and the ride leader sees who is coming in each pace group.</div>
+   ${role==='admin'?`<button class="btn" onclick="newRide()">+ New ride</button>`:''}`;
+}
+function vRide(id){
+  const r = rides.find(x=>x.id===id); if(!r) return vRides();
+  const mine = myRsvp[r.id];
+  const groups = r.groups.map((g,i)=>{
+    const s=seats(g), pct=Math.min(100,Math.round(g.rsvp/g.cap*100));
+    const isMine = mine && mine.g===g.g;
+    let action;
+    if(isMine) action = mine.status==='in' ? `<button class="btn done" onclick="cancel('${r.id}')">YOU'RE IN · CANCEL</button>` : `<button class="btn full" onclick="cancel('${r.id}')">WAITLIST #${mine.pos} · LEAVE</button>`;
+    else if(mine) action = `<span class="tag">You're booked in ${mine.g}</span>`;
+    else action = s>0 ? `<button class="btn" onclick="rsvp('${r.id}',${i})">RSVP · ${s} SEAT${s===1?'':'S'} LEFT</button>` : `<button class="btn full" onclick="rsvp('${r.id}',${i})">JOIN WAITLIST (${g.wait} AHEAD)</button>`;
+    return `<div class="card"><div class="row"><div><div class="display" style="font-size:26px">${g.g}</div><div class="tag mono">${g.pace}</div></div><span class="badge ${s>0?'b-green':'b-red'}">${s>0?s+' OPEN':'FULL'}</span></div>
+      <div class="bar"><i style="width:${pct}%"></i></div><div class="row" style="margin:8px 0 14px"><span class="tag">${g.rsvp} of ${g.cap} riders</span><span class="tag">${g.wait} on waitlist</span></div>${action}</div>`;
+  }).join('');
+  return `<a href="#rides" class="mono tag" style="text-decoration:none">← ALL RIDES</a>` + header(r.date+' · '+r.time, esc(r.title).toUpperCase()) +
+  `<div class="grid two"><div><div class="sec">Choose your pace group</div><div class="pace" style="margin-top:0">${groups}</div>
+     <div class="row" style="justify-content:flex-start;gap:8px;flex-wrap:wrap">
+       <button class="btn ghost" onclick="toast('Added to your calendar (prototype)')">Add to calendar</button>
+       <button class="btn ghost" onclick="shareWa('${r.id}')">Share to WhatsApp group</button>
+       ${r.fee?`<a class="btn ghost" href="#payments">Pay R${r.fee} ride fee</a>`:''}
+     </div></div>
+   <div class="card"><div class="sec">Ride details</div><div class="kv">
+     <div>Distance</div><div>${r.km} km</div><div>Climbing</div><div>${r.climb}</div><div>Start</div><div>${esc(r.start)}</div>
+     <div>Ride leader</div><div>${r.leader}</div><div>Sweep</div><div>${r.sweep}</div><div>Ride fee</div><div>${r.fee?'R'+r.fee+' (coffee and support vehicle)':'None'}</div></div>
+     <svg viewBox="0 0 300 110" style="width:100%;margin-top:18px;background:#0d0d0d;border:1px solid var(--mid)" role="img" aria-label="Route elevation sketch"><polyline fill="none" stroke="var(--brand)" stroke-width="2" points="0,90 30,80 60,85 90,55 120,62 150,30 180,45 210,40 240,70 270,60 300,88"/><text x="8" y="16" fill="#777" font-family="IBM Plex Mono" font-size="9">ROUTE PROFILE · ${r.km} KM</text></svg>
+   </div></div>`;
+}
+function rsvp(id,i){
+  const r=rides.find(x=>x.id===id), g=r.groups[i];
+  if(seats(g)>0){g.rsvp++;myRsvp[id]={g:g.g,status:'in'};toast(`You're in: ${g.g}, ${r.title}`)}
+  else{g.wait++;myRsvp[id]={g:g.g,status:'wait',pos:g.wait};toast(`Added to the ${g.g} waitlist at #${g.wait}. You'll be notified if a seat opens.`)}
+  route();
+}
+function cancel(id){
+  const r=rides.find(x=>x.id===id), m=myRsvp[id], g=r.groups.find(x=>x.g===m.g);
+  if(m.status==='in'){ if(g.wait>0){g.wait--;toast('Seat released. The first rider on the waitlist was moved in and notified.')} else {g.rsvp--;toast('RSVP cancelled')} }
+  else {g.wait--;toast('Left the waitlist')}
+  delete myRsvp[id]; route();
+}
+function shareWa(id){
+  const r=rides.find(x=>x.id===id);
+  openModal(`<div class="label">WhatsApp message preview</div><div style="background:#0b3d2e;border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px;line-height:1.5;color:#e9fff3">🚴 <b>${esc(r.title)}</b><br>${r.date}, ${r.time} · ${r.km} km<br>${r.groups.map(g=>`${g.g}: ${seats(g)>0?seats(g)+' seats left':'full, waitlist open'}`).join('<br>')}<br>RSVP: ${club.key==='pbc'?club.url+'/rides':'link to the club app'}</div><p class="muted" style="font-size:12.5px;line-height:1.5">WhatsApp stays the chat. The link brings members back to one place to RSVP.</p><button class="btn" onclick="closeModal();toast('Message copied (prototype)')">Copy message</button> <button class="btn ghost" onclick="closeModal()">Close</button>`);
+}
+function newRide(){
+  openModal(`<div class="label">New ride</div><h2 class="display" style="font-size:30px;margin:8px 0 16px">PUBLISH A RIDE</h2>
+  <label class="tag mono">TITLE</label><input class="input" id="nr-t" value="Magaliesberg Sunrise Ride" style="margin:6px 0 12px">
+  <label class="tag mono">DATE</label><input class="input" id="nr-d" value="SAT 12 DEC" style="margin:6px 0 12px">
+  <label class="tag mono">PACE GROUPS AND CAPS</label><div class="tag" style="margin:6px 0 16px">A-Group 20 · B-Group 20</div>
+  <button class="btn" onclick="addRide()">Publish and notify members</button> <button class="btn ghost" onclick="closeModal()">Cancel</button>`);
+}
+function addRide(){
+  rides.push({id:'magaliesberg',date:$('#nr-d').value.toUpperCase(),time:'05:30',title:$('#nr-t').value,km:80,climb:'900 m',start:'Hennops River bridge',leader:'Sipho N.',sweep:'Thandi M.',groups:[{g:'A-Group',pace:'30–32 km/h',cap:20,rsvp:0,wait:0},{g:'B-Group',pace:'25–27 km/h',cap:20,rsvp:0,wait:0}],fee:0});
+  closeModal();toast('Ride published. 112 members notified by email and in-app.');route();
+}
+let netFilter='All', netQ='';
+function vNetwork(){
+  const inds=['All',...new Set(people.map(p=>p.ind))];
+  const list=people.filter(p=>(netFilter==='All'||p.ind===netFilter)&&(p.n+p.biz+p.offer).toLowerCase().includes(netQ.toLowerCase()));
+  return header(role==='admin'?'Member register':'Members\' business network', role==='admin'?'MEMBERS':'NETWORK','Members ride together and do business together. Each member chooses what to share, and nothing is visible outside the club.') +
+  `<input class="input" placeholder="Search members, businesses or offers" value="${esc(netQ)}" oninput="netQ=this.value;renderNetList()" style="max-width:420px">
+   <div class="chips">${inds.map(x=>`<button class="chip ${x===netFilter?'on':''}" onclick="netFilter='${x}';route()">${x.toUpperCase()}</button>`).join('')}</div>
+   <div class="grid people" id="netlist">${netCards(list)}</div>
+   <div class="callout">Sponsor slot: a member business can pay to appear first in the network, which is a second revenue line for the club and for Maru.</div>`;
+}
+function netCards(list){return list.length?list.map(p=>`<div class="card"><div class="row" style="justify-content:flex-start"><div class="avatar">${p.i}</div><div><div style="font-weight:500;font-size:14px">${p.n}</div><div class="tag">${p.r}</div></div></div>
+   <div style="margin-top:14px;font-size:13.5px;font-weight:500">${p.biz}</div><div class="tag mono" style="margin-top:2px">${p.ind.toUpperCase()} · ${p.city.toUpperCase()}</div>
+   <div style="font-size:12.5px;color:#cfcfca;margin-top:10px;line-height:1.5">${p.offer}</div>
+   <button class="btn ghost sm" style="margin-top:14px" onclick="toast('Introduction request sent to ${p.n.split(' ')[0]} (prototype)')">Request intro</button></div>`).join(''):`<div class="card muted">No members match.</div>`}
+function renderNetList(){const l=people.filter(p=>(netFilter==='All'||p.ind===netFilter)&&(p.n+p.biz+p.offer).toLowerCase().includes(netQ.toLowerCase()));$('#netlist').innerHTML=netCards(l)}
+function vPayments(){
+  if(role==='admin') return header('Club finances','PAYMENTS','Dues and ride fees collected in rand, straight into the club\'s bank account, with a live view of who has paid.') +
+   `<div class="grid stats"><div class="card stat"><div class="n">R81,600</div><div class="l">2027 dues collected</div></div><div class="card stat"><div class="n">68 / 112</div><div class="l">Members paid</div></div><div class="card stat"><div class="n">R3,750</div><div class="l">Ride fees this month</div></div><div class="card stat"><div class="n">44</div><div class="l">Reminders scheduled</div></div></div>
+   <div class="card" style="padding:0;overflow:auto"><table class="tbl"><thead><tr><th>Member</th><th>Item</th><th class="hm">Method</th><th>Status</th></tr></thead><tbody>
+   <tr><td>Naledi Sithole</td><td>2027 dues · R1,200</td><td class="hm">Card</td><td><span class="badge b-green">PAID</span></td></tr>
+   <tr><td>Kabelo Dlamini</td><td>2027 dues · R1,200</td><td class="hm">Instant EFT</td><td><span class="badge b-green">PAID</span></td></tr>
+   <tr><td>Johan Botha</td><td>2027 dues · R1,200</td><td class="hm">—</td><td><span class="badge b-amber">REMINDED</span></td></tr>
+   <tr><td>Ayesha Rawat</td><td>Hartbeespoort fee · R150</td><td class="hm">Card</td><td><span class="badge b-green">PAID</span></td></tr>
+   <tr><td>Phenyo Mathopa</td><td>2027 dues · R1,200</td><td class="hm">—</td><td><span class="badge ${dues.paid?'b-green':'b-red'}">${dues.paid?'PAID':'DUE'}</span></td></tr>
+   </tbody></table></div><div class="callout">Payments run through a South African gateway such as PayFast. Global club apps that rely on Stripe can't serve South African companies directly.</div>`;
+  return header('My payments','PAYMENTS','Pay club dues and ride fees in rand, by card or Instant EFT.') +
+  `<div class="grid two"><div class="grid">
+    <div class="card"><div class="row"><div><div style="font-weight:500">2027 club membership</div><div class="tag">Jan to Dec 2027 · includes ride insurance top-up</div></div><div class="display" style="font-size:30px">R1,200</div></div>
+      <div style="margin-top:14px">${dues.paid?`<span class="btn done">PAID · RECEIPT EMAILED</span>`:`<button class="btn" onclick="payFlow()">Pay now</button> <button class="btn ghost" onclick="toast('Split into 3 monthly payments (prototype)')">Pay in 3</button>`}</div></div>
+    <div class="card"><div class="row"><div><div style="font-weight:500">Hartbeespoort Dam Challenge</div><div class="tag">Ride fee · coffee and support vehicle</div></div><div class="display" style="font-size:30px">R150</div></div><div style="margin-top:14px"><button class="btn ghost" onclick="toast('Paid R150 (prototype)')">Pay R150</button></div></div>
+   </div><div class="card"><div class="sec">History</div><div class="kv"><div>Feb 2026</div><div>2026 membership · R1,100</div><div>Mar 2026</div><div>Club kit · R890</div><div>Aug 2026</div><div>Tour weekend deposit · R2,500</div></div></div></div>`;
+}
+function payFlow(){
+  openModal(`<div class="label">Secure checkout (demo)</div><h2 class="display" style="font-size:30px;margin:8px 0 4px">R1,200.00</h2><div class="tag">2027 membership · ${club.name}</div>
+  <div class="chips" style="margin:18px 0"><button class="chip on">CARD</button><button class="chip">INSTANT EFT</button><button class="chip">APPLE PAY</button></div>
+  <input class="input" value="4000 0000 0000 0002" disabled style="margin-bottom:8px;opacity:.6"><div class="tag" style="margin-bottom:18px">Demo only: no real payment is taken. A live version would use a local gateway such as PayFast.</div>
+  <button class="btn" onclick="dues.paid=true;closeModal();toast('Payment received. Receipt sent and the treasurer\\'s register updated.');route()">Pay R1,200</button> <button class="btn ghost" onclick="closeModal()">Cancel</button>`);
+}
+function vAdmin(){
+  const wait = rides.reduce((s,r)=>s+r.groups.reduce((a,g)=>a+g.wait,0),0);
+  return header('Admin command centre','COMMAND CENTRE','What used to take hours in WhatsApp: who is riding, who is waiting, who has paid, and what the club needs to do this week.') +
+  `<div class="grid stats"><div class="card stat"><div class="n">${club.members}</div><div class="l">Active members</div></div><div class="card stat"><div class="n">84%</div><div class="l">Showed up after RSVP</div></div><div class="card stat"><div class="n">${wait}</div><div class="l">On waitlists</div></div><div class="card stat"><div class="n">61%</div><div class="l">2027 dues paid</div></div></div>
+  <div class="grid two"><div><div class="sec">Rides and capacity</div><div class="card" style="padding:0;overflow:auto"><table class="tbl"><thead><tr><th>Ride</th><th>Group</th><th>Booked</th><th class="hm">Waitlist</th></tr></thead><tbody>
+  ${rides.flatMap(r=>r.groups.map(g=>`<tr><td>${r.date.split(' ').slice(1).join(' ')} · ${esc(r.title.split(' ').slice(0,2).join(' '))}</td><td>${g.g}</td><td>${g.rsvp}/${g.cap}</td><td class="hm">${g.wait?`<span class="badge b-amber">${g.wait}</span>`:'—'}</td></tr>`)).join('')}
+  </tbody></table></div><div style="margin-top:12px"><button class="btn" onclick="newRide()">+ New ride</button> <button class="btn ghost" onclick="toast('Announcement sent to 112 members (prototype)')">Send announcement</button></div></div>
+  <div class="grid"><div class="card"><div class="sec">This week</div>
+    <div style="font-size:13px;line-height:1.9">● 3 riders waiting for A-Group on Saturday<br>● 44 members still owe 2027 dues<br>● 2 new member applications to approve<br>● Ride leader needed for 6 Dec</div></div>
+   <div class="card"><div class="sec">POPIA</div><div style="font-size:13px;line-height:1.7">Consent recorded: <b style="font-weight:500">112 of 112</b><br>Open data requests: <b style="font-weight:500">1</b> (export)<br>Information officer: Naledi Sithole</div>
+    <button class="btn ghost sm" style="margin-top:12px" onclick="toast('Member data export prepared (prototype)')">Process export</button></div></div></div>`;
+}
+function vClubs(){
+  return header('One platform, many clubs','CLUBS','Each club gets its own brand, address and data. Tap a club to see the same platform re-skin itself.') +
+  `<div class="hero-club">${Object.values(clubs).map(c=>`<button class="clubcard ${c.key===club.key?'on':''}" onclick="switchClub('${c.key}')"><div class="row" style="justify-content:flex-start"><div class="logo" style="width:40px;height:40px;background:${c.brand};display:grid;place-items:center;font-family:'Bebas Neue';font-size:19px;color:#fff">${c.logo}</div><div><div class="display" style="font-size:21px">${c.name}</div><div class="tag mono">${c.city.toUpperCase()} · ${c.members} MEMBERS</div></div></div><div class="tag" style="margin-top:12px">${c.url}</div></button>`).join('')}</div>
+  <div class="callout">Clubs never see each other's members, rides or payments. A rider who belongs to two clubs uses one login and sees both.</div>
+  <div class="tag">Coastal Spokes and Cape Gravel Collective are fictional examples.</div>`;
+}
+function switchClub(k){club=clubs[k];document.documentElement.style.setProperty('--brand',club.brand);document.documentElement.style.setProperty('--brand-hi',club.hi);$('#club-logo').textContent=club.logo;$('#club-name').textContent=club.name;$('#club-sub').textContent=club.sub;toast(`Now viewing ${club.name}`);route()}
+function vAbout(){
+  return header('About this prototype','WHAT YOU\'RE LOOKING AT','A clickable model of Maru Clubs, built from the existing PBC design. It runs on sample data: nothing is saved and no payment is real.') +
+  `<div class="grid people">
+   ${[['RSVP and waitlists','Pace groups with their own caps. Full groups keep a queue that moves automatically.','#ride-blue-valley'],['Payments in rand','Dues and ride fees by card or Instant EFT, with a live register for the treasurer.','#payments'],['Business network','A private directory of members\' businesses and offers.','#network'],['Admin command centre','Capacity, waitlists, dues and POPIA requests on one screen.','#admin'],['Many clubs, one platform','Each club gets its own brand, address and data.','#clubs'],['WhatsApp-friendly','Share a ride to the group chat; members RSVP from the link.','#ride-hartbeespoort']].map(([t,d,h])=>`<a class="card" href="${h}" style="text-decoration:none"><div style="font-weight:500;font-size:14.5px">${t}</div><div class="muted" style="font-size:12.5px;line-height:1.5;margin-top:6px">${d}</div><div class="mono tag" style="margin-top:12px;color:var(--brand)">OPEN →</div></a>`).join('')}</div>`;
+}
+
+// ---------- Router (plain #name hashes) ----------
+function setRole(r){role=r;$('#as-member').classList.toggle('on',r==='member');$('#as-admin').classList.toggle('on',r==='admin');$('#who-role').textContent=r==='admin'?'Admin · Committee':'Member · A-Group';
+  const h=location.hash.slice(1); if(r==='admin'&&(h===''||h==='home')) location.hash='admin'; else if(r==='member'&&h==='admin') location.hash='home'; else route();}
+function route(){
+  closeModal();
+  let h=(location.hash||'#home').slice(1);
+  if(h==='admin'&&role!=='admin'){role='admin';$('#as-admin').classList.add('on');$('#as-member').classList.remove('on');$('#who-role').textContent='Admin · Committee'}
+  let html, active=h;
+  if(h.startsWith('ride-')){html=vRide(h.slice(5));active='ride'}
+  else html=({home:vHome,rides:vRides,network:vNetwork,payments:vPayments,admin:vAdmin,clubs:vClubs,about:vAbout}[h]||vHome)();
+  $('#view').innerHTML=html; renderNav(active); window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route); route();
+</script>
+</body>
+</html>
