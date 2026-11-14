@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maru Clubs — Investor Deck for Phenyo</title>
+<meta name="description" content="The club app South Africa's weekend riders don't have yet: rides, waitlists, rand payments and a members' network. Investor deck, November 2026.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Maru Clubs">
+<meta property="og:title" content="Maru Clubs — Investor Deck">
+<meta property="og:description" content="A real gap, a small market and a cheap way to find out. 16 slides, with a clickable prototype.">
+<meta property="og:url" content="https://maru-clubs.vercel.app/deck/">
+<meta property="og:image" content="https://maru-clubs.vercel.app/og-deck.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://maru-clubs.vercel.app/og-deck.png">
+<style>
+@font-face{font-family:'Bebas Neue';font-weight:400;font-display:block;src:url(fonts/bebas-neue-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-weight:300;font-display:block;src:url(fonts/dm-sans-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-weight:400;font-display:block;src:url(fonts/dm-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-weight:500;font-display:block;src:url(fonts/dm-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-weight:600;font-display:block;src:url(fonts/dm-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-weight:400;font-display:block;src:url(fonts/ibm-plex-mono-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-weight:500;font-display:block;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format('woff2')}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#050505;overflow:hidden;font-family:'DM Sans',Arial,sans-serif}
+#viewport{position:fixed;inset:0 0 44px 0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#stage{width:1920px;height:1080px;position:relative;transform-origin:center center;flex:none}
+#stage section{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;display:none}
+#stage section.active{display:flex!important}
+/* deck.css */
+section{background:#080808;color:#F2F2ED;position:relative;padding:84px 112px 72px;display:flex;flex-direction:column;gap:24px;overflow:hidden;box-sizing:border-box}
+section.light{background:#F2F2ED;color:#141413}
+section.red{background:#CC0000;color:#F7F5F0}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:.3em;text-transform:uppercase;color:#F5C518;margin:0;display:block}
+section.light .eyebrow{color:#CC0000}
+section.red .eyebrow{color:#fff}
+h1,h2,h3,.htitle{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:.04em;color:#F2F2ED}
+section.light h1,section.light h2,section.light h3{color:#080808}
+.htitle{font-size:132px;line-height:.88;margin:24px 0 8px}
+.htitle .ol{color:transparent;-webkit-text-stroke:3px #CC0000;display:block}
+p{font-size:32px;line-height:1.4;margin:0}
+ul{margin:0;padding-left:44px}
+h2.st{font-size:84px;line-height:.92;margin:0}
+h2.st em,.htitle .ol{font-style:normal;color:transparent;-webkit-text-stroke:3px #CC0000}
+section.red h2.st em{-webkit-text-stroke:3px #fff}
+h3{font-size:40px;line-height:.95;text-transform:uppercase}
+.hgrid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(204,0,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(204,0,0,.05) 1px,transparent 1px);background-size:120px 120px}
+.hbody{font-size:34px;line-height:1.6;color:#CCCCCA;font-weight:300;max-width:1000px;margin:0 0 40px}
+.redbar{width:72px;height:4px;background:#CC0000;margin:20px 0 28px}
+.lead{font-size:36px;line-height:1.4;color:#CCCCCA}
+section.light .lead{color:#4A4A45}
+.body{color:#CCCCCA}
+section.light .body{color:#4A4A45}
+.small{font-size:24px;line-height:1.4;color:#A8A8A0}
+section.light .small{color:#5A5A54}
+section.red .small{color:#FFE3DF}
+.row{display:flex;flex-direction:row;gap:24px}
+.col{display:flex;flex-direction:column;gap:16px}
+.grow{flex:1}
+.card{background:#141414;border:2px solid #242424;padding:30px;display:flex;flex-direction:column;gap:12px;flex:1}
+section.light .card{background:#fff;border:2px solid #DEDED6}
+section.red .card{background:#9E0000;border:2px solid #D44A3F}
+.card.accent{border:3px solid #CC0000}
+.card .tag,.tag{font-family:'IBM Plex Mono','Courier New',monospace;font-size:24px;letter-spacing:4px;color:#FF2020}
+section.light .card .tag{color:#B30000}
+section.red .card .tag{color:#FFD9D4}
+.card .txt,.txt{font-size:28px;line-height:1.4;color:#CCCCCA}
+section.light .card .txt{color:#4A4A45}
+section.red .card .txt{color:#FFE9E6}
+.big{font-family:'Bebas Neue',Arial,sans-serif;font-size:120px;line-height:.9}
+.bigred{font-family:'Bebas Neue',Arial,sans-serif;font-size:120px;line-height:.9;color:#FF2020}
+section.light .bigred{color:#B30000}
+.pill{background:#CC0000;color:#fff;font-family:'IBM Plex Mono','Courier New',monospace;font-size:26px;letter-spacing:3px;padding:18px 32px;align-self:flex-start}
+.pill a{color:#fff;text-decoration:none}
+.link{font-family:'IBM Plex Mono','Courier New',monospace;font-size:24px;letter-spacing:2px}
+.link a{color:#FF2020}
+section.light .link a{color:#B30000}
+.source{font-size:24px;color:#8C8C85}
+section.light .source{color:#6B6B65}
+.barrow{display:flex;flex-direction:row;align-items:center;gap:24px}
+.barlabel{width:420px;font-size:28px;text-align:right}
+.bartrack{flex:1;display:flex;flex-direction:row;align-items:center;gap:16px}
+.bar{height:40px;background:#5C5C57;flex:none}
+.bar.hot{background:#CC0000}
+section.light .bar{background:#A9A9A1}
+section.light .bar.hot{background:#B30000}
+.barval{font-size:28px;font-weight:600;white-space:nowrap}
+.chip{white-space:nowrap;font-family:'IBM Plex Mono','Courier New',monospace;font-size:24px;letter-spacing:2px;padding:8px 16px;align-self:flex-start}
+.chip.high{background:#FBE3E0;color:#9A0000}
+.chip.med{background:#FBF0D9;color:#7A5200}
+.chip.low{background:#E3F2E2;color:#1E6B23}
+x-shape{display:block;clip-path:polygon(0 30%,62% 30%,62% 0,100% 50%,62% 100%,62% 70%,0 70%)}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:14px 18px;border-bottom:2px solid #DEDED6;vertical-align:top;line-height:1.3}
+th{font-family:'IBM Plex Mono','Courier New',monospace;font-size:22px;letter-spacing:2px;color:#5A5A54;font-weight:500}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.in{animation:rise 500ms ease-out both}
+.d1{animation-delay:120ms}.d2{animation-delay:240ms}.d3{animation-delay:360ms}.d4{animation-delay:480ms}
+/* prototype link cards */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;flex:1}
+.pcard{background:#141414;border:2px solid #242424;padding:36px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:#F2F2ED}
+.pcard:hover{border-color:#CC0000}
+.pcard h3{font-size:40px}
+.pcard .txt{margin-top:12px}
+/* nav bar */
+#nav{position:fixed;left:0;right:0;bottom:0;height:44px;background:#111;border-top:1px solid #2a2a28;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 12px;color:#bbb;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;z-index:5}
+#nav button{background:#1c1c1a;color:#eee;border:1px solid #333;padding:7px 14px;font:inherit;cursor:pointer}
+#nav button:hover{background:#CC0000;border-color:#CC0000}
+#nav .mid{flex:1;display:flex;align-items:center;gap:10px}
+#bar{flex:1;height:4px;background:#2a2a28;position:relative}
+#bar i{position:absolute;left:0;top:0;bottom:0;background:#CC0000;width:0}
+#rotate{display:none;position:fixed;top:8px;left:50%;transform:translateX(-50%);background:#fff;color:#111;padding:8px 14px;font:500 13px 'DM Sans',sans-serif;z-index:9;border-radius:3px}
+@media (orientation:portrait) and (max-width:700px){#rotate{display:block}}
+</style>
+</head>
+<body>
+<div id="rotate">Rotate your phone sideways for the best view</div>
+<div id="viewport"><div id="stage">
+
+<section id="cover" class="active" style="padding:0;display:none">
+<div class="hgrid"></div>
+<div style="position:absolute;left:640px;top:-90px;width:1944px;height:1296px;background:url('pbc-cyclist.jpg') center/cover no-repeat;opacity:.9"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(90deg,#080808 0%,#080808 38%,rgba(8,8,8,.55) 62%,rgba(8,8,8,.15) 100%),linear-gradient(0deg,#080808 0%,transparent 28%)"></div>
+<div class="col" style="position:absolute;left:128px;top:0;bottom:0;width:1250px;justify-content:center;gap:0">
+<span class="eyebrow">Maru Online · For Phenyo Mathopa · November 2026</span>
+<h1 class="htitle">THE CLUB APP<br><span class="ol">SOUTH AFRICA’S WEEKEND</span>RIDERS DON’T HAVE YET</h1>
+<div class="redbar"></div>
+<p class="hbody">Rides, waitlists, dues and a members’ network for private social cycling clubs. Built on the PBC design, and working today on sample data.</p>
+<p class="pill"><a href="https://maru-clubs.vercel.app/#about" target="_blank" rel="noopener">TAP THROUGH THE PROTOTYPE →</a></p>
+</div>
+</section>
+
+<section id="minute" class="light">
+<p class="eyebrow">IN ONE MINUTE</p>
+<h2 class="st">A REAL GAP, A SMALL MARKET<br><em>AND A CHEAP WAY TO FIND OUT</em></h2>
+<div class="row" style="gap:24px;flex:1;">
+<div class="card in"><p class="tag">THE GAP</p><h3>No tool runs a South African cycling club end to end</h3><p class="txt">Pace-group rides with waitlists, dues paid in rand and a private members’ network sit in no single app today.</p></div>
+<div class="card in d1"><p class="tag">THE CATCH</p><h3>Free tools already do part of the job</h3><p class="txt">WhatsApp, Strava and Spond cost clubs nothing. About 580 clubs could use Maru (an estimate), and break-even needs about 48 paying.</p></div>
+<div class="card accent in d2"><p class="tag">THE ASK</p><h3>Help us test it before anyone scales it</h3><p class="txt">Ride it, open five club doors and back a small validation round. Scale money follows only if 3 of 5 pilot clubs pay.</p></div>
+</div>
+</section>
+
+<section id="problem">
+<p class="eyebrow">THE PROBLEM</p>
+<h2 class="st">EVERY SATURDAY STARTS IN A<br><em>200-MESSAGE WHATSAPP THREAD</em></h2>
+<div class="row" style="align-items:stretch;gap:0px;flex:1;">
+<div class="card in" style="flex:1;"><p class="tag">TODAY, IN THE GROUP CHAT</p>
+<ul style="font-size:30px;line-height:1.6;color:#CCCCCA;"><li>Ride details buried under replies</li><li>RSVPs counted by hand</li><li>No queue when a group is full</li><li>Dues chased one member at a time</li><li>No record of who rode</li></ul></div>
+<div style="width:120px;display:flex;align-items:center;justify-content:center;"><x-shape style="background:#CC0000;width:88px;height:44px;"></x-shape></div>
+<div class="card accent in d2" style="flex:1;"><p class="tag">WITH MARU CLUBS</p>
+<ul style="font-size:30px;line-height:1.6;color:#F2F2ED;"><li>One calendar with pace groups</li><li>RSVP in one tap, with a cap per group</li><li>Automatic waitlist that moves up</li><li>Dues paid in rand and tracked live</li><li>A members’ business network</li></ul></div>
+</div>
+<p class="source">Problem as described in PBC’s own proposal: ride information lost in 200 messages, no single calendar, no digital home. <a href="https://maru-clubs.vercel.app/#ride-blue-valley" target="_blank" rel="noopener" style="color:#FF2020;">See a ride in the prototype →</a></p>
+</section>
+
+<section id="apps" class="light">
+<p class="eyebrow">Q1 · THE APP LANDSCAPE</p>
+<h2 class="st">NO ONE COUNTS CYCLING APPS.<br><em>THEY DO FOUR JOBS</em></h2>
+<div class="row" style="gap:20px;flex:1;">
+<div class="card in"><p class="tag">TRACK &amp; COMPARE</p><h3>Strava</h3><p class="txt">Free; Premium about R110 a month in SA</p><h3>Garmin Connect</h3><p class="txt">Free with a device; Connect+ £6.99 a month (UK)</p></div>
+<div class="card in d1"><p class="tag">NAVIGATE</p><h3>Komoot</h3><p class="txt">Free; Premium $59.99 a year</p><h3>Ride with GPS</h3><p class="txt">Free with a paid tier; route planning for road riders</p></div>
+<div class="card in d2"><p class="tag">TRAIN</p><h3>Zwift</h3><p class="txt">$19.99 a month, indoor riding</p><h3>TrainingPeaks</h3><p class="txt">$19.95 a month Premium; bought by Garmin in July 2026</p></div>
+<div class="card accent in d3"><p class="tag">RUN THE CLUB</p><h3>WhatsApp, Strava clubs, Spond</h3><p class="txt">Free. Spond charges on payments only</p><h3>Comunita, Hubtiger</h3><p class="txt">South African; community and bike-shop led</p></div>
+</div>
+<p class="source">No public register of cycling apps exists, and app stores list hundreds. The useful count is by job: Maru competes only in the last column.</p>
+</section>
+
+<section id="prices">
+<p class="eyebrow">Q1 · PRICE POINTS</p>
+<h2 class="st">RIDERS PAY FOR TRAINING.<br><em>CLUBS PAY NOTHING FOR THEIR TOOLS</em></h2>
+<div class="row" style="gap:48px;flex:1;align-items:center;">
+<div class="col grow" style="gap:18px;">
+<p class="small" style="margin-left:404px;">Approximate cost per month, rand</p>
+<div class="barrow in"><p class="barlabel" style="width:380px;">Zwift</p><div class="bartrack"><div class="bar" style="width:520px;"></div><p class="barval">R360</p></div></div>
+<div class="barrow in d1"><p class="barlabel" style="width:380px;">TrainingPeaks Premium</p><div class="bartrack"><div class="bar" style="width:519px;"></div><p class="barval">R359</p></div></div>
+<div class="barrow in d1"><p class="barlabel" style="width:380px;">Cycle Lab Active (club)</p><div class="bartrack"><div class="bar hot" style="width:215px;"></div><p class="barval">R149</p></div></div>
+<div class="barrow in d2"><p class="barlabel" style="width:380px;">Strava Premium</p><div class="bartrack"><div class="bar" style="width:159px;"></div><p class="barval">R110</p></div></div>
+<div class="barrow in d2"><p class="barlabel" style="width:380px;">Komoot Premium</p><div class="bartrack"><div class="bar" style="width:130px;"></div><p class="barval">R90</p></div></div>
+<div class="barrow in d3"><p class="barlabel" style="width:380px;">Spond Club</p><div class="bartrack"><div class="bar" style="width:4px;"></div><p class="barval">R0 + payment fees</p></div></div>
+<div class="barrow in d3"><p class="barlabel" style="width:380px;">Strava clubs, WhatsApp</p><div class="bartrack"><div class="bar" style="width:4px;"></div><p class="barval">R0</p></div></div>
+</div>
+<div class="card accent in d4" style="flex:none;width:440px;"><p class="bigred">47%</p><p class="txt">of 2,927 mountain bikers in TREAD’s survey pay for Strava.</p><p class="txt">The money sits with the rider, not the club. We should test a per-member price, not only a club fee.</p></div>
+</div>
+<p class="source">US-dollar prices converted at about R18 per $. Strava SA price from a price tracker; Cycle Lab Active also charges R999 to join.</p>
+</section>
+
+<section id="compare" class="light">
+<p class="eyebrow">Q2 · STRAVA, SPOND, CYCLE LAB ACTIVE</p>
+<h2 class="st">EACH COVERS PART OF THE CLUB.<br><em>NONE COVERS ALL OF IT</em></h2>
+<table style="font-size:26px;color:#141413;">
+<tr><th style="width:28%;">What a club needs</th><th style="width:17%;">Strava</th><th style="width:19%;">Spond Club</th><th style="width:19%;">Cycle Lab Active</th><th style="width:17%;">Maru Clubs</th></tr>
+<tr><td>Rides with pace groups</td><td>Yes, up to 4</td><td>Generic events</td><td>Yes, own rides</td><td style="color:#B30000;">Yes</td></tr>
+<tr><td>Cap per group, auto waitlist</td><td>Cap; no waitlist found</td><td>Waitlists on courses</td><td>Not stated</td><td style="color:#B30000;">Yes</td></tr>
+<tr><td>Club brand and own web address</td><td>No, a Strava page</td><td>Yes</td><td>Cycle Lab brand</td><td style="color:#B30000;">Yes</td></tr>
+<tr><td>Member register, admin roles</td><td>Basic</td><td>Yes</td><td>In-house</td><td style="color:#B30000;">Yes</td></tr>
+<tr><td>Dues and fees in rand</td><td>No</td><td>Via Stripe; SA unconfirmed</td><td>Own billing</td><td style="color:#B30000;">Yes, SA gateway</td></tr>
+<tr><td>Members’ business network</td><td>No</td><td>No</td><td>No</td><td style="color:#B30000;">Yes</td></tr>
+<tr><td>Open to any club</td><td>Yes</td><td>Yes</td><td>No, its own club</td><td style="color:#B30000;">Yes</td></tr>
+<tr><td>Cost to the club</td><td>Free</td><td>Free + payment fee</td><td>Riders pay R149/month</td><td style="color:#B30000;">To be tested</td></tr>
+</table>
+<p class="source">From each provider’s public pages, checked 14 Nov 2026. Maru column = the prototype and plan, not a live product.</p>
+</section>
+
+<section id="gaps" class="red">
+<p class="eyebrow">Q2 · THE GAPS WE CAN EXPLOIT</p>
+<h2 class="st">FOUR GAPS<br><em>WE CAN OWN</em></h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:1;">
+<div class="card in"><p class="tag">01 · RIDES BUILT FOR CYCLING</p><p class="txt">Pace groups, a cap per group, a waitlist that moves up, ride leader and sweep, all in one place.</p></div>
+<div class="card in d1"><p class="tag">02 · PAYMENTS IN RAND</p><p class="txt">Dues, ride fees and tour deposits through a South African gateway. Spond pays out through Stripe, which doesn’t sign up SA companies.</p></div>
+<div class="card in d2"><p class="tag">03 · THE MEMBERS’ NETWORK</p><p class="txt">A private directory of members’ businesses and offers. No rival offers it, and it suits clubs of professionals like PBC.</p></div>
+<div class="card in d3"><p class="tag">04 · LOCAL AND POPIA-READY</p><p class="txt">Built and supported in South Africa, with consent, data requests and an information officer built in.</p></div>
+</div>
+<p class="small">Spond already does general club admin for free. If clubs won’t pay for these four, the honest answer is to stop.</p>
+</section>
+
+<section id="segments" class="light">
+<p class="eyebrow">Q3 · HOW RIDERS SEGMENT</p>
+<h2 class="st">SIX KINDS OF RIDER,<br><em>ONE CLEAR FIRST TARGET</em></h2>
+<table style="font-size:26px;color:#141413;">
+<tr><th style="width:26%;">Segment</th><th style="width:50%;">What we know</th><th style="width:24%;">Role for Maru</th></tr>
+<tr style="background:#FBE3E0;"><td>Private social and business clubs</td><td>No count exists. Estimate: about 580 addressable (250 to 1,050)</td><td style="color:#B30000;">First target (PBC type)</td></tr>
+<tr><td>Retailer-run clubs</td><td>Cycle Lab Active: 5 megastores, R999 to join plus R149 a month</td><td>Partner or white-label</td></tr>
+<tr><td>Racing and affiliated clubs</td><td>35.5% of TREAD riders hold annual CSA membership</td><td>Later; racing needs differ</td></tr>
+<tr><td>University clubs</td><td>TuksSport cycling: R400 social, R800 regular a year</td><td>Low budget</td></tr>
+<tr><td>Informal riding groups</td><td>Strava clubs of 30 to 1,295 followers (Western Cape examples)</td><td>Feeder: groups become clubs</td></tr>
+<tr><td>Event riders</td><td>Cape Town Cycle Tour expected about 30,000 riders</td><td>Channel, not a customer</td></tr>
+</table>
+<p class="source">Sources: Perplexity sizing estimate (13 Nov 2026), TREAD 2024 SA MTB survey, Cycle Lab, TuksSport, City of Cape Town.</p>
+</section>
+
+<section id="riders">
+<p class="eyebrow">Q3 · WHO RIDES</p>
+<h2 class="st">THE CORE RIDER: 40 TO 59,<br><em>IN GAUTENG, IN A CLUB, PAYING FOR APPS</em></h2>
+<div class="row" style="gap:48px;flex:1;">
+<div class="col grow" style="gap:16px;"><h3>Where they ride</h3>
+<div class="barrow"><p class="barlabel" style="width:220px;">Gauteng</p><div class="bartrack"><div class="bar hot" style="width:300px;"></div><p class="barval">45.6%</p></div></div>
+<div class="barrow"><p class="barlabel" style="width:220px;">Western Cape</p><div class="bartrack"><div class="bar" style="width:165px;"></div><p class="barval">25.1%</p></div></div>
+<div class="barrow"><p class="barlabel" style="width:220px;">KwaZulu-Natal</p><div class="bartrack"><div class="bar" style="width:75px;"></div><p class="barval">11.4%</p></div></div>
+<div class="barrow"><p class="barlabel" style="width:220px;">Everywhere else</p><div class="bartrack"><div class="bar" style="width:118px;"></div><p class="barval">17.9%</p></div></div>
+</div>
+<div class="col grow" style="gap:16px;"><h3>How old they are</h3>
+<div class="barrow"><p class="barlabel" style="width:160px;">Under 30</p><div class="bartrack"><div class="bar" style="width:124px;"></div><p class="barval">12.6%</p></div></div>
+<div class="barrow"><p class="barlabel" style="width:160px;">30 to 39</p><div class="bartrack"><div class="bar" style="width:125px;"></div><p class="barval">12.7%</p></div></div>
+<div class="barrow"><p class="barlabel" style="width:160px;">40 to 49</p><div class="bartrack"><div class="bar hot" style="width:241px;"></div><p class="barval">24.6%</p></div></div>
+<div class="barrow"><p class="barlabel" style="width:160px;">50 to 59</p><div class="bartrack"><div class="bar hot" style="width:300px;"></div><p class="barval">30.5%</p></div></div>
+<div class="barrow"><p class="barlabel" style="width:160px;">60 and over</p><div class="bartrack"><div class="bar" style="width:193px;"></div><p class="barval">19.6%</p></div></div>
+</div>
+</div>
+<div class="row" style="gap:24px;">
+<div class="card" style="flex-direction:row;align-items:center;gap:20px;padding:24px 32px;"><p class="bigred" style="font-size:72px;">51%</p><p class="txt">belong to a club</p></div>
+<div class="card" style="flex-direction:row;align-items:center;gap:20px;padding:24px 32px;"><p class="bigred" style="font-size:72px;">47%</p><p class="txt">pay for Strava</p></div>
+<div class="card" style="flex-direction:row;align-items:center;gap:20px;padding:24px 32px;"><p class="bigred" style="font-size:72px;">79%</p><p class="txt">are men</p></div>
+</div>
+<p class="source">TREAD 2024 SA Mountain Biking Survey, 2,927 respondents, latest column. Self-selected mountain bikers, so road and social riders may differ.</p>
+</section>
+
+<section id="honest" class="light">
+<p class="eyebrow">THE HONEST VIEW · PORTER’S FIVE FORCES</p>
+<h2 class="st">A TOUGH MARKET TO CHARGE IN,<br><em>SO WE TEST BEFORE WE SCALE</em></h2>
+<div class="row" style="gap:48px;flex:1;">
+<div class="col" style="width:800px;gap:14px;">
+<div class="row" style="align-items:center;gap:20px;"><p class="chip high">HIGH</p><p class="body">Substitutes: WhatsApp, Strava clubs, Spond, all free</p></div>
+<div class="row" style="align-items:center;gap:20px;"><p class="chip high">HIGH</p><p class="body">Buyer power: volunteer-run clubs, no lock-in</p></div>
+<div class="row" style="align-items:center;gap:20px;"><p class="chip high">HIGH</p><p class="body">New entrants: club software is cheap to build</p></div>
+<div class="row" style="align-items:center;gap:20px;"><p class="chip med">MEDIUM</p><p class="body">Rivalry: no dominant paid SA player yet</p></div>
+<div class="row" style="align-items:center;gap:20px;"><p class="chip low">LOW–MED</p><p class="body">Suppliers: cloud, Meta and payment gateways</p></div>
+</div>
+<div class="col grow" style="gap:24px;">
+<div class="card" style="flex:none;"><div class="row" style="align-items:flex-end;gap:20px;"><p class="big">580</p><p class="txt">clubs could use Maru (estimate; 250 to 1,050)</p></div></div>
+<div class="card" style="flex:none;"><div class="row" style="align-items:flex-end;gap:20px;"><p class="big">6–29</p><p class="txt">paying clubs at 1% to 5% uptake</p></div></div>
+<div class="card accent" style="flex:none;"><div class="row" style="align-items:flex-end;gap:20px;"><p class="bigred">48</p><p class="txt">paying clubs to break even (model)</p></div></div>
+</div>
+</div>
+<p class="source">Full analysis in the Market Assessment document. Club counts are unsourced estimates; break-even uses placeholder prices and costs.</p>
+</section>
+
+<section id="prototype">
+<p class="eyebrow">Q4 · CAN WE SEE IT WORKING?</p>
+<h2 class="st">YES. IT’S BUILT.<br><em>TAP THROUGH IT</em></h2>
+<div class="pgrid">
+<a class="pcard" href="https://maru-clubs.vercel.app/#home" target="_blank" rel="noopener"><div><p class="tag">01</p><h3>Member dashboard</h3><p class="txt">Stats, upcoming rides and announcements</p></div><p class="link"><span style="color:#FF2020;">OPEN →</span></p></a>
+<a class="pcard" href="https://maru-clubs.vercel.app/#ride-blue-valley" target="_blank" rel="noopener"><div><p class="tag">02</p><h3>RSVP and waitlist</h3><p class="txt">A-Group full with a queue; B-Group has seats left</p></div><p class="link"><span style="color:#FF2020;">OPEN →</span></p></a>
+<a class="pcard" href="https://maru-clubs.vercel.app/#network" target="_blank" rel="noopener"><div><p class="tag">03</p><h3>Business network</h3><p class="txt">Members’ businesses and offers, with industry filters</p></div><p class="link"><span style="color:#FF2020;">OPEN →</span></p></a>
+<a class="pcard" href="https://maru-clubs.vercel.app/#payments" target="_blank" rel="noopener"><div><p class="tag">04</p><h3>Dues in rand</h3><p class="txt">Checkout for 2027 membership dues of R1,200</p></div><p class="link"><span style="color:#FF2020;">OPEN →</span></p></a>
+<a class="pcard" href="https://maru-clubs.vercel.app/#admin" target="_blank" rel="noopener"><div><p class="tag">05</p><h3>Admin command centre</h3><p class="txt">Capacity, waitlists, dues and a POPIA panel</p></div><p class="link"><span style="color:#FF2020;">OPEN →</span></p></a>
+<a class="pcard" href="https://maru-clubs.vercel.app/#clubs" target="_blank" rel="noopener"><div><p class="tag">06</p><h3>Many clubs, one platform</h3><p class="txt">The same platform re-skinned for a second club</p></div><p class="link"><span style="color:#FF2020;">OPEN →</span></p></a>
+</div>
+<p class="source">Sample data only: nothing is saved and no payment is real. It works on a phone.</p>
+</section>
+
+<section id="popia" class="light">
+<p class="eyebrow">Q5 · POPIA</p>
+<h2 class="st">POPIA BINDS US IN FULL,<br><em>AND CAN REACH STRAVA TOO</em></h2>
+<div class="row" style="align-items:center;gap:0px;">
+<div class="card" style="flex:1;padding:28px;"><p class="tag">MEMBER</p><p class="txt">Gives consent and can ask for a copy or deletion</p></div>
+<div style="width:72px;display:flex;justify-content:center;"><x-shape style="background:#B30000;width:48px;height:24px;"></x-shape></div>
+<div class="card" style="flex:1;padding:28px;"><p class="tag">THE CLUB</p><p class="txt">Responsible party: decides what is collected and why</p></div>
+<div style="width:72px;display:flex;justify-content:center;"><x-shape style="background:#B30000;width:48px;height:24px;"></x-shape></div>
+<div class="card accent" style="flex:1;padding:28px;"><p class="tag">MARU</p><p class="txt">Operator: processes for the club under a contract</p></div>
+<div style="width:72px;display:flex;justify-content:center;"><x-shape style="background:#B30000;width:48px;height:24px;"></x-shape></div>
+<div class="card" style="flex:1;padding:28px;"><p class="tag">HOSTING</p><p class="txt">Offshore cloud: cross-border safeguards apply</p></div>
+</div>
+<div class="row" style="gap:48px;flex:1;">
+<div class="col grow"><h3>What it means for Maru</h3>
+<ul style="font-size:28px;line-height:1.5;color:#4A4A45;"><li>Register an information officer</li><li>Consent and a privacy notice for every club</li><li>Report breaches to the Regulator and to members</li><li>Opt-in before any marketing message</li><li>Penalties: fines up to R10 million; some offences carry prison</li></ul></div>
+<div class="col grow"><h3>Do Strava and Spond have to comply?</h3>
+<p class="body" style="font-size:28px;">POPIA covers foreign companies that use means in South Africa to process personal information, not just local ones. Whether a given app is caught is a legal question. Both publish GDPR-style policies.</p>
+<p class="body" style="font-size:28px;">For us it’s a selling point: compliance is built in, so the club’s committee carries less risk.</p></div>
+</div>
+<p class="source">POPIA sections 3, 22 and 72, as summarised by DLA Piper and Bowmans. Not legal advice.</p>
+</section>
+
+<section id="money">
+<p class="eyebrow">Q6 · WHERE THE R1M GOES</p>
+<h2 class="st">R2.24M SPENT OVER THREE YEARS,<br><em>R0.99M FUNDED</em></h2>
+<div class="col" style="gap:10px;">
+<div class="barrow"><p class="barlabel" style="width:430px;">Engineering and product</p><div class="bartrack"><div class="bar" style="width:563px;"></div><p class="barval">R1,260k</p></div></div>
+<div class="barrow"><p class="barlabel" style="width:430px;">Go-to-market</p><div class="bartrack"><div style="width:563px;flex:none;"></div><div class="bar" style="width:241px;"></div><p class="barval">R540k</p></div></div>
+<div class="barrow"><p class="barlabel" style="width:430px;">Legal, POPIA and admin</p><div class="bartrack"><div style="width:804px;flex:none;"></div><div class="bar" style="width:80px;"></div><p class="barval">R180k</p></div></div>
+<div class="barrow"><p class="barlabel" style="width:430px;">Onboarding new clubs</p><div class="bartrack"><div style="width:884px;flex:none;"></div><div class="bar" style="width:65px;"></div><p class="barval">R145k</p></div></div>
+<div class="barrow"><p class="barlabel" style="width:430px;">Hosting, sign-in, messaging</p><div class="bartrack"><div style="width:949px;flex:none;"></div><div class="bar" style="width:51px;"></div><p class="barval">R113k</p></div></div>
+<div class="barrow"><p class="barlabel" style="width:430px;font-weight:600;">Total spend</p><div class="bartrack"><div class="bar" style="width:1000px;background:#8E8E86;"></div><p class="barval">R2,238k</p></div></div>
+<div class="barrow"><p class="barlabel" style="width:430px;">Less revenue from clubs</p><div class="bartrack"><div style="width:444px;flex:none;"></div><div class="bar" style="width:556px;background:#2F2F2C;border:2px dashed #8E8E86;"></div><p class="barval">−R1,245k</p></div></div>
+<div class="barrow"><p class="barlabel" style="width:430px;font-weight:600;">Funding needed</p><div class="bartrack"><div class="bar hot" style="width:444px;"></div><p class="barval">R993k (R1.2M with 20% buffer)</p></div></div>
+</div>
+<div class="row" style="gap:24px;">
+<div class="card" style="padding:24px 32px;gap:8px;"><p class="tag">YEAR 1 ALONE</p><p class="txt">Spend R459k, revenue R155k: about R304k needed. This is the scale of the first tranche.</p></div>
+<div class="card" style="padding:24px 32px;gap:8px;"><p class="tag">READ WITH CARE</p><p class="txt">Every price and cost is a placeholder in our model. Real quotes replace them before any money moves.</p></div>
+</div>
+</section>
+
+<section id="plan" class="light">
+<p class="eyebrow">THE PLAN</p>
+<h2 class="st">RELEASE MONEY IN STAGES,<br><em>AGAINST PROOF</em></h2>
+<div class="row" style="gap:16px;align-items:stretch;">
+<div class="card in"><p class="tag">WEEKS 1–6</p><h3>First club live</h3><p class="txt">Database, RSVPs, waitlist, email</p></div>
+<div class="card in d1"><p class="tag">WEEKS 7–12</p><h3>Many clubs</h3><p class="txt">Club accounts, own address, POPIA</p></div>
+<div class="card in d2"><p class="tag">MONTHS 4–6</p><h3>Five pilots</h3><p class="txt">Price tests with real clubs</p></div>
+<div class="card accent in d3"><p class="tag">MONTH 7 ON</p><h3>Scale</h3><p class="txt">Only if Gate 3 passes</p></div>
+</div>
+<div class="row" style="gap:16px;">
+<p class="small grow">Gate 1: a real ride booked on Maru</p>
+<p class="small grow">Gate 2: a second club live, no code changes</p>
+<p class="small grow" style="color:#B30000;">Gate 3: at least 3 of 5 pilot clubs paying</p>
+<p class="small grow">Tranche 2 is sized from pilot data</p>
+</div>
+<div class="col" style="gap:12px;"><h3>Six-month sales funnel (targets)</h3>
+<div class="row" style="gap:12px;align-items:flex-end;">
+<div class="col" style="gap:8px;flex:none;"><div style="width:600px;height:120px;background:#A9A9A1;"></div><p class="small"><b>100</b> clubs listed</p></div>
+<div class="col" style="gap:8px;flex:none;"><div style="width:300px;height:120px;background:#A9A9A1;"></div><p class="small"><b>50</b> chairs surveyed</p></div>
+<div class="col" style="gap:8px;flex:none;"><div style="width:90px;height:120px;background:#A9A9A1;"></div><p class="small"><b>15</b> calls</p></div>
+<div class="col" style="gap:8px;flex:none;"><div style="width:30px;height:120px;background:#A9A9A1;"></div><p class="small"><b>5</b> pilots</p></div>
+<div class="col" style="gap:8px;flex:none;"><div style="width:18px;height:120px;background:#B30000;"></div><p class="small" style="color:#B30000;"><b>3</b> paying</p></div>
+</div></div>
+</section>
+
+<section id="ask" class="red">
+<p class="eyebrow">THE ASK</p>
+<h2 class="st">YOU’RE THE INVESTOR<br><em>AND THE CUSTOMER</em></h2>
+<div class="row" style="gap:24px;flex:1;">
+<div class="card in"><p class="bigred" style="color:#FFD9D4;">01</p><h3>Ride it</h3><p class="txt">Use the prototype with your own club and tell us what’s missing. You are the rider we’re building for.</p></div>
+<div class="card in d1"><p class="bigred" style="color:#FFD9D4;">02</p><h3>Open five doors</h3><p class="txt">Introductions to five club chairs or ride captains for the pilot.</p></div>
+<div class="card in d2"><p class="bigred" style="color:#FFD9D4;">03</p><h3>Back the test</h3><p class="txt">A validation tranche sized on real quotes. Scale money only if 3 of 5 pilot clubs pay.</p></div>
+</div>
+<div class="row" style="align-items:center;gap:32px;">
+<p class="pill" style="background:#0B0B0A;"><a href="https://maru-clubs.vercel.app/#about" target="_blank" rel="noopener">OPEN THE PROTOTYPE →</a></p>
+<p class="small">Next step: a 30-minute walkthrough, then a ride.</p>
+</div>
+</section>
+
+<section id="sources" class="light">
+<p class="eyebrow">APPENDIX</p>
+<h2 class="st">SOURCES,<br><em>CHECKED 14 NOVEMBER 2026</em></h2>
+<div class="row" style="gap:48px;">
+<ul class="grow" style="font-size:24px;line-height:1.5;color:#4A4A45;">
+<li><a href="https://www.treadmtb.co.za/2024-sa-mountain-biking-survey-the-results/" style="color:#B30000;" target="_blank" rel="noopener">TREAD: 2024 SA Mountain Biking Survey</a></li>
+<li><a href="https://www.capetown.gov.za/media-and-news/your-ultimate-guide-to-the-47th-cape-town-cycle-tour/" style="color:#B30000;" target="_blank" rel="noopener">City of Cape Town: Cycle Tour guide</a></li>
+<li><a href="https://www.cyclelab.com/the-many-benefits-of-joining-cycle" style="color:#B30000;" target="_blank" rel="noopener">Cycle Lab Active membership</a></li>
+<li><a href="https://www.up.ac.za/tukssport/article/2664650/club-membership-fees" style="color:#B30000;" target="_blank" rel="noopener">TuksSport club fees</a></li>
+<li><a href="https://support.strava.com/hc/en-us/articles/216918607-Group-Events-for-Clubs" style="color:#B30000;" target="_blank" rel="noopener">Strava: Group Events for Clubs</a></li>
+<li><a href="https://subger.com/en/nz/service/strava-al-extra" style="color:#B30000;" target="_blank" rel="noopener">Subger: Strava regional prices</a></li>
+<li><a href="https://www.cyclingweekly.com/news/latest-news/best-cycling-apps" style="color:#B30000;" target="_blank" rel="noopener">Cycling Weekly: best cycling apps</a></li>
+</ul>
+<ul class="grow" style="font-size:24px;line-height:1.5;color:#4A4A45;">
+<li><a href="https://www.spond.com/spond-club-overview/" style="color:#B30000;" target="_blank" rel="noopener">Spond Club overview</a></li>
+<li><a href="https://help.spond.com/club/en/articles/177554-payments-in-spond-club" style="color:#B30000;" target="_blank" rel="noopener">Spond: payments partner</a></li>
+<li><a href="https://checkoutjoy.com/docs/guides/south-africa/" style="color:#B30000;" target="_blank" rel="noopener">CheckoutJoy: SA payment gateways</a></li>
+<li><a href="https://the5krunner.com/2026/11/09/indoor-cycling-apps-compared/" style="color:#B30000;" target="_blank" rel="noopener">the5krunner: indoor apps, Garmin buys TrainingPeaks</a></li>
+<li><a href="https://www.dlapiperdataprotection.com/index.html?t=law&amp;c=ZA" style="color:#B30000;" target="_blank" rel="noopener">DLA Piper: POPIA overview</a></li>
+<li><a href="https://www.lexmundi.com/guides/data-privacy-guide/jurisdictions/africa/south-africa/" style="color:#B30000;" target="_blank" rel="noopener">Bowmans via Lex Mundi: POPIA scope</a></li>
+<li><a href="https://communitypilot.lovable.app/" style="color:#B30000;" target="_blank" rel="noopener">Comunita</a></li>
+</ul>
+</div>
+<p class="source">Market sizing: Perplexity research (13 Nov 2026), inputs unsourced. Costs and revenue: Maru Clubs business model, base case, placeholders.</p>
+</section>
+
+</div></div>
+<div id="nav"><button id="prev" aria-label="Previous slide">← PREV</button><div class="mid"><span id="count">1 / 16</span><div id="bar"><i></i></div></div><button id="next" aria-label="Next slide">NEXT →</button></div>
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('#stage section')),i=0,stage=document.getElementById('stage');
+  function fit(){var vw=window.innerWidth,vh=window.innerHeight-44,s=Math.min(vw/1920,vh/1080);stage.style.transform='scale('+s+')'}
+  function fitSlide(sec){
+    sec.style.zoom='';sec.style.width='1920px';sec.style.height='1080px';
+    var z=1;
+    while(z>0.55){
+      sec.style.zoom=z;sec.style.width=(1920/z)+'px';sec.style.height=(1080/z)+'px';
+      if(sec.scrollHeight<=sec.clientHeight+1)break;
+      z-=0.03;
+    }
+  }
+  function show(n,push){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(s,k){s.classList.toggle('active',k===i)});
+    if(i>0)fitSlide(slides[i]);
+    document.getElementById('count').textContent=(i+1)+' / '+slides.length;
+    document.querySelector('#bar i').style.width=((i+1)/slides.length*100)+'%';
+    if(push!==false){try{history.replaceState(null,'','#'+slides[i].id)}catch(e){}}
+  }
+  document.getElementById('prev').onclick=function(){show(i-1)};
+  document.getElementById('next').onclick=function(){show(i+1)};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1)}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1)}
+    else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);
+  });
+  var x0=null;
+  document.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>60)show(dx<0?i+1:i-1)},{passive:true});
+  window.addEventListener('resize',fit);
+  var h=location.hash.slice(1),k=slides.findIndex(function(s){return s.id===h});
+  fit();show(k>=0?k:0,false);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){if(i>0)fitSlide(slides[i])});
+})();
+</script>
+</body>
+</html>
