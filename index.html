@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Maru Clubs — Interactive Prototype</title>
-<meta name="description" content="Clickable prototype of Maru Clubs, a club platform for private social cycling clubs in South Africa. Sample data only.">
+<title>Maru Cycling — Interactive Prototype</title>
+<meta name="description" content="Clickable prototype of Maru Cycling, a club platform for private social cycling clubs in South Africa. Sample data only.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Maru Clubs">
-<meta property="og:title" content="Maru Clubs — Interactive Prototype">
+<meta property="og:site_name" content="Maru Cycling">
+<meta property="og:title" content="Maru Cycling — Interactive Prototype">
 <meta property="og:description" content="Rides, waitlists, rand payments and a members' business network for South African cycling clubs. Tap through it on your phone. Sample data only.">
 <meta property="og:url" content="https://maru-clubs.vercel.app/">
 <meta property="og:image" content="https://maru-clubs.vercel.app/og-cover.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Maru Clubs — a platform for South African cycling clubs">
+<meta property="og:image:alt" content="Maru Cycling — a platform for South African cycling clubs">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://maru-clubs.vercel.app/og-cover.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -221,7 +221,7 @@ body.phone-mode #phone-stage{display:flex}
 </style>
 </head>
 <body>
-<div id="welcome" role="dialog" aria-label="Welcome to Maru Clubs">
+<div id="welcome" role="dialog" aria-label="Welcome to Maru Cycling">
 <div class="ph"></div><div class="shade"></div>
 <div class="col"><span class="eyebrow">Maru Online · Interactive prototype</span>
 <h1><span class="ol">South Africa’s weekend</span>The club app riders don’t have yet</h1>
@@ -230,7 +230,7 @@ body.phone-mode #phone-stage{display:flex}
 <div class="ctas"><button class="btn" onclick="enterApp()">Enter the prototype →</button><button class="btn ghost dsk" onclick="enterApp('iphone')">View as iPhone</button></div></div>
 <div class="foot">Sample data · nothing is saved</div></div>
 <div class="proto-bar">
-  <span><span style="color:#ff6b6b">●</span> <span class="txt">INTERACTIVE PROTOTYPE · SAMPLE DATA · </span>MARU CLUBS</span>
+  <span><span style="color:#ff6b6b">●</span> <span class="txt">INTERACTIVE PROTOTYPE · SAMPLE DATA · </span>MARU CYCLING</span>
   <div class="grp">
     <div class="seg" id="vseg" role="group" aria-label="Device">
       <button id="v-desktop" class="on" onclick="setView('desktop')">DESKTOP</button>
@@ -250,7 +250,7 @@ body.phone-mode #phone-stage{display:flex}
   </aside>
   <main id="view" aria-live="polite"></main>
 </div>
-<div id="phone-stage"><div id="phone-wrap"><div class="phone"><iframe id="phone-frame" title="Maru Clubs on iPhone" loading="lazy"></iframe></div></div><div id="phone-note"><b>THE <em>IPHONE</em> VIEW</b>Tap through it the way a member would on their phone. Switch between Member and Admin at the top, or back to Desktop for the full layout.</div></div>
+<div id="phone-stage"><div id="phone-wrap"><div class="phone"><iframe id="phone-frame" title="Maru Cycling on iPhone" loading="lazy"></iframe></div></div><div id="phone-note"><b>THE <em>IPHONE</em> VIEW</b>Tap through it the way a member would on their phone. Switch between Member and Admin at the top, or back to Desktop for the full layout.</div></div>
 <nav class="mobnav" id="mobnav"></nav>
 <div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()"><div class="modal" id="modal-body"></div></div>
 <div class="toast" id="toast"></div>
@@ -446,7 +446,7 @@ function vClubs(){
 }
 function switchClub(k){club=clubs[k];document.documentElement.style.setProperty('--brand',club.brand);document.documentElement.style.setProperty('--brand-hi',club.hi);$('#club-logo').textContent=club.logo;$('#club-name').textContent=club.name;$('#club-sub').textContent=club.sub;toast(`Now viewing ${club.name}`);route()}
 function vAbout(){
-  return header('About this prototype','WHAT YOU\'RE LOOKING AT','A clickable model of Maru Clubs, built from the existing PBC design. It runs on sample data: nothing is saved and no payment is real.') +
+  return header('About this prototype','WHAT YOU\'RE LOOKING AT','A clickable model of Maru Cycling, built from the existing PBC design. It runs on sample data: nothing is saved and no payment is real.') +
   `<div class="grid people">
    ${[['RSVP and waitlists','Pace groups with their own caps. Full groups keep a queue that moves automatically.','#ride-blue-valley'],['Payments in rand','Dues and ride fees by card or Instant EFT, with a live register for the treasurer.','#payments'],['Business network','A private directory of members\' businesses and offers.','#network'],['Admin command centre','Capacity, waitlists, dues and POPIA requests on one screen.','#admin'],['Many clubs, one platform','Each club gets its own brand, address and data.','#clubs'],['WhatsApp-friendly','Share a ride to the group chat; members RSVP from the link.','#ride-hartbeespoort']].map(([t,d,h])=>`<a class="card" href="${h}" style="text-decoration:none"><div style="font-weight:500;font-size:14.5px">${t}</div><div class="muted" style="font-size:12.5px;line-height:1.5;margin-top:6px">${d}</div><div class="mono tag" style="margin-top:12px;color:var(--brand)">OPEN →</div></a>`).join('')}</div>`;
 }
