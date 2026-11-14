@@ -20,7 +20,8 @@
 <meta name="twitter:image" content="https://maru-clubs.vercel.app/og-cover.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<script>if(/[?&]embed=1/.test(location.search))document.documentElement.classList.add("embed")</script>
+<script>(function(){var q=location.search,h=location.hash,d=document.documentElement,e=/[?&]embed=1/.test(q);if(e)d.classList.add("embed");
+var w=e?/[?&]welcome=1/.test(q):(!/[?&]welcome=0/.test(q)&&(h===""||h==="#"));if(w)d.classList.add("welcome-on")})()</script>
 <style>
 :root{--brand:#CC0000;--brand-hi:#FF2020;--black:#080808;--white:#F2F2ED;--grey:#141414;--mid:#242424;--muted:#8a8a8a;--ok:#00cc44;--yellow:#F5C518}
 *{box-sizing:border-box}
@@ -136,7 +137,7 @@ h1.page{font-family:'Bebas Neue';font-weight:400;font-size:clamp(34px,5vw,54px);
 .stat .l{font-size:11.5px}
 .tag{font-size:12.5px}
 .badge{font-size:11px;padding:4px 10px}
-.btn{font-size:12px;color:var(--yellow)}
+.btn{font-size:12px;color:#fff}
 .btn.sm{font-size:11px;padding:7px 12px}
 .btn.ghost,.btn.full,.btn.done{color:inherit}
 .btn.ghost{color:var(--white)}
@@ -183,9 +184,51 @@ body.phone-mode #phone-stage{display:flex}
 .embed::-webkit-scrollbar{display:none}
 /* real phones: native mobile layout, no switcher */
 @media (max-width:900px){#vseg{display:none}.proto-bar .grp{gap:0}}
+
+/* ===== welcome screen ===== */
+#welcome{display:none;position:fixed;inset:0;z-index:500;background:#080808;overflow:hidden}
+.welcome-on #welcome{display:block}
+.welcome-on body{overflow:hidden}
+#welcome .ph{position:absolute;right:-4%;top:-9%;width:76%;height:118%;background:url('deck/pbc-cyclist.jpg') center/cover no-repeat;opacity:.9}
+#welcome .shade{position:absolute;inset:0;background:linear-gradient(90deg,#080808 0%,#080808 38%,rgba(8,8,8,.55) 62%,rgba(8,8,8,.15) 100%),linear-gradient(0deg,#080808 0%,transparent 28%)}
+#welcome .col{position:absolute;left:7%;top:0;bottom:0;width:min(760px,60%);display:flex;flex-direction:column;justify-content:center}
+#welcome .eyebrow{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.24em;color:var(--yellow);text-transform:uppercase;margin-bottom:22px}
+#welcome h1{font-family:'Bebas Neue';font-weight:400;letter-spacing:.04em;line-height:.92;text-transform:uppercase;color:var(--white);font-size:clamp(46px,6.2vw,96px);margin:0}
+#welcome h1 .ol{display:block;color:transparent;-webkit-text-stroke:1.5px var(--brand);font-size:.5em;letter-spacing:.06em;margin-bottom:.12em}
+#welcome .bar{width:64px;height:4px;background:var(--brand);margin:26px 0}
+#welcome p.lead{font-family:'DM Sans',system-ui,sans-serif;font-weight:300;font-size:clamp(15px,1.45vw,20px);line-height:1.55;color:#ccccca;max-width:540px;margin:0 0 30px}
+#welcome .ctas{display:flex;gap:14px;flex-wrap:wrap}
+#welcome .btn{font-size:13px;padding:15px 26px;letter-spacing:.14em}
+#welcome .foot{position:absolute;left:7%;bottom:26px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.2em;color:#8a8a84;text-transform:uppercase}
+@media (max-width:900px){
+ #welcome .ph{right:0;left:0;top:0;width:100%;height:56%;opacity:.95}
+ #welcome .shade{background:linear-gradient(0deg,#080808 0%,#080808 40%,rgba(8,8,8,.6) 58%,rgba(8,8,8,.1) 100%)}
+ #welcome .col{left:0;right:0;width:auto;top:auto;bottom:0;padding:0 24px 76px;justify-content:flex-end}
+ #welcome h1{font-size:clamp(40px,13vw,64px)}
+ #welcome .bar{margin:18px 0}
+ #welcome .dsk{display:none}
+ #welcome .btn{width:100%;text-align:center}
+ #welcome .foot{left:24px;bottom:28px}
+}
+.embed #welcome .ph{right:0;left:0;top:0;width:100%;height:56%}
+.embed #welcome .shade{background:linear-gradient(0deg,#080808 0%,#080808 40%,rgba(8,8,8,.6) 58%,rgba(8,8,8,.1) 100%)}
+.embed #welcome .col{left:0;right:0;width:auto;top:auto;bottom:0;padding:0 24px 76px;justify-content:flex-end}
+.embed #welcome h1{font-size:46px}
+.embed #welcome .bar{margin:18px 0}
+.embed #welcome .dsk{display:none}
+.embed #welcome .btn{width:100%;text-align:center}
+.embed #welcome .foot{left:24px;bottom:28px}
 </style>
 </head>
 <body>
+<div id="welcome" role="dialog" aria-label="Welcome to Maru Clubs">
+<div class="ph"></div><div class="shade"></div>
+<div class="col"><span class="eyebrow">Maru Online · Interactive prototype</span>
+<h1><span class="ol">South Africa’s weekend</span>The club app riders don’t have yet</h1>
+<div class="bar"></div>
+<p class="lead">Rides, waitlists, dues and a members’ network for private social cycling clubs. Built on the PBC design, working today on sample data.</p>
+<div class="ctas"><button class="btn" onclick="enterApp()">Enter the prototype →</button><button class="btn ghost dsk" onclick="enterApp('iphone')">View as iPhone</button></div></div>
+<div class="foot">Sample data · nothing is saved</div></div>
 <div class="proto-bar">
   <span><span style="color:#ff6b6b">●</span> <span class="txt">INTERACTIVE PROTOTYPE · SAMPLE DATA · </span>MARU CLUBS</span>
   <div class="grp">
@@ -435,12 +478,13 @@ function fitPhone(){
   const k=Math.min(1,(window.innerHeight-70)/890,(window.innerWidth-40)/430);
   w.style.transform='scale('+k+')'; w.style.margin=((860*k-860)/2)+'px '+((414*k-414)/2)+'px';
 }
-function setView(m){
+function enterApp(m){document.documentElement.classList.remove('welcome-on'); if(m==='iphone') setView('iphone',true)}
+function setView(m,w){
   if(EMBED) return;
   const f=$('#phone-frame'), body=document.body;
   if(m==='iphone'){
     f.onload=function(){ if(role==='admin'){try{f.contentWindow.setRole('admin')}catch(e){}} };
-    f.src=location.pathname+'?embed=1'+(location.hash||'#home');
+    f.src=location.pathname+'?embed=1'+(w?'&welcome=1':'')+(location.hash||'#home');
     body.classList.add('phone-mode'); fitPhone();
   } else {
     if(body.classList.contains('phone-mode')){
@@ -453,7 +497,7 @@ function setView(m){
 }
 window.addEventListener('resize',fitPhone);
 window.addEventListener('hashchange',()=>{if(!document.body.classList.contains('phone-mode'))route()}); route();
-if(!EMBED&&/[?&]view=iphone/.test(location.search)&&window.innerWidth>900)setView('iphone');
+if(!EMBED&&/[?&]view=iphone/.test(location.search)&&window.innerWidth>900){var _w=document.documentElement.classList.contains('welcome-on');document.documentElement.classList.remove('welcome-on');setView('iphone',_w)}
 </script>
 </body>
 </html>
