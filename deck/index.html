@@ -130,6 +130,27 @@ tr[style*="FBE3E0"]{background:#FFF4C2!important;box-shadow:inset 6px 0 0 var(--
 .pcard:hover{border-color:var(--yellow)}
 .barval{color:inherit}
 #cover .pill,#cover .pill a,#closing .pill,#closing .pill a{color:#fff}
+
+/* Compare table: header band, highlighted Maru column, quieter competitors */
+#compare table{border-collapse:separate;border-spacing:0;background:#fff;border:2px solid #DEDED6;font-size:27px}
+#compare th{background:#080808;color:#F2F2ED;font-size:21px;letter-spacing:3px;padding:20px 22px;border-bottom:4px solid var(--red);text-transform:uppercase}
+#compare th:first-child{color:var(--yellow)}
+#compare th:last-child{background:var(--red);color:var(--yellow);border-bottom-color:var(--yellow)}
+#compare td{padding:16px 22px;border-bottom:1px solid #ECECE4}
+#compare td:first-child{font-weight:600;color:#080808}
+#compare tr:nth-child(even) td{background:#FAFAF6}
+#compare td.no{color:#9A9A92}
+#compare td:last-child{background:#FFF8DA!important;color:#B30000;font-weight:600;border-left:3px solid var(--yellow)}
+#compare tr:last-child td{border-bottom:0}
+#compare tr:last-child td:last-child{color:#7A5200}
+#compare td:last-child:not(:empty)::before{content:'';}
+#segments table{border-collapse:separate;border-spacing:0;background:#fff;border:2px solid #DEDED6;font-size:27px}
+#segments th{background:#080808;color:#F2F2ED;font-size:21px;letter-spacing:3px;padding:20px 22px;border-bottom:4px solid var(--red);text-transform:uppercase}
+#segments th:first-child{color:var(--yellow)}
+#segments td{padding:16px 22px;border-bottom:1px solid #ECECE4}
+#segments td:first-child{font-weight:600;color:#080808}
+#segments tr:last-child td{border-bottom:0}
+#segments tr[style*="FBE3E0"] td{background:#FFF8DA!important}
 /* nav bar */
 #nav{position:fixed;left:0;right:0;bottom:0;height:44px;background:#111;border-top:1px solid #2a2a28;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 12px;color:#bbb;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;z-index:5}
 #nav button{background:#1c1c1a;color:#eee;border:1px solid #333;padding:7px 14px;font:inherit;cursor:pointer}
@@ -219,11 +240,11 @@ tr[style*="FBE3E0"]{background:#FFF4C2!important;box-shadow:inset 6px 0 0 var(--
 <tr><th style="width:28%;">What a club needs</th><th style="width:17%;">Strava</th><th style="width:19%;">Spond Club</th><th style="width:19%;">Cycle Lab Active</th><th style="width:17%;">Maru Clubs</th></tr>
 <tr><td>Rides with pace groups</td><td>Yes, up to 4</td><td>Generic events</td><td>Yes, own rides</td><td style="color:#B30000;">Yes</td></tr>
 <tr><td>Cap per group, auto waitlist</td><td>Cap; no waitlist found</td><td>Waitlists on courses</td><td>Not stated</td><td style="color:#B30000;">Yes</td></tr>
-<tr><td>Club brand and own web address</td><td>No, a Strava page</td><td>Yes</td><td>Cycle Lab brand</td><td style="color:#B30000;">Yes</td></tr>
-<tr><td>Member register, admin roles</td><td>Basic</td><td>Yes</td><td>In-house</td><td style="color:#B30000;">Yes</td></tr>
-<tr><td>Dues and fees in rand</td><td>No</td><td>Via Stripe; SA unconfirmed</td><td>Own billing</td><td style="color:#B30000;">Yes, SA gateway</td></tr>
-<tr><td>Members’ business network</td><td>No</td><td>No</td><td>No</td><td style="color:#B30000;">Yes</td></tr>
-<tr><td>Open to any club</td><td>Yes</td><td>Yes</td><td>No, its own club</td><td style="color:#B30000;">Yes</td></tr>
+<tr><td>Club brand and own web address</td><td class="no">No, a Strava page</td><td>Yes</td><td>Cycle Lab brand</td><td style="color:#B30000;">Yes</td></tr>
+<tr><td>Member register, admin roles</td><td class="no">Basic</td><td>Yes</td><td>In-house</td><td style="color:#B30000;">Yes</td></tr>
+<tr><td>Dues and fees in rand</td><td class="no">No</td><td>Via Stripe; SA unconfirmed</td><td>Own billing</td><td style="color:#B30000;">Yes, SA gateway</td></tr>
+<tr><td>Members’ business network</td><td class="no">No</td><td class="no">No</td><td class="no">No</td><td style="color:#B30000;">Yes</td></tr>
+<tr><td>Open to any club</td><td>Yes</td><td>Yes</td><td class="no">No, its own club</td><td style="color:#B30000;">Yes</td></tr>
 <tr><td>Cost to the club</td><td>Free</td><td>Free + payment fee</td><td>Riders pay R149/month</td><td style="color:#B30000;">To be tested</td></tr>
 </table>
 <p class="source">From each provider’s public pages, checked 14 Nov 2026. Maru column = the prototype and plan, not a live product.</p>
